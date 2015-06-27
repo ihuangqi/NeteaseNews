@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[NewsViewController initCategoryView:]:NewsViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.frame.size.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[NewsView scrollViewDidScroll:]:NewsView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentSize.height">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView.contentOffset.y">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

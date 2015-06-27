@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="130" id="iyu-Rp-4xN" customClass="EntertainmentCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iyu-Rp-4xN" id="tIJ-Gl-GXb">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易BoBo直播间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyL-tK-Y6w">
+                        <rect key="frame" x="10" y="9" width="107" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9e-aU-kAT">
+                        <rect key="frame" x="10" y="31" width="115" height="88"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="88" id="J41-kB-bff"/>
+                            <constraint firstAttribute="width" constant="115" id="cCf-0G-UJw"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="pp6-14-zsn"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCP-TH-Jrx">
+                        <rect key="frame" x="250" y="31" width="115" height="88"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="17U-JL-ByD">
+                        <rect key="frame" x="130" y="31" width="115" height="88"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易云音乐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSB-iW-kHR">
+                        <rect key="frame" x="250" y="12" width="70" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.95686274510000002" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="17U-JL-ByD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="F9e-aU-kAT" secondAttribute="trailing" constant="5" id="0gI-5v-wTg"/>
+                    <constraint firstItem="17U-JL-ByD" firstAttribute="centerY" secondItem="F9e-aU-kAT" secondAttribute="centerY" id="4ng-TL-jj2"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="F9e-aU-kAT" secondAttribute="bottom" constant="2" id="5Bm-ZA-zeO"/>
+                    <constraint firstItem="F9e-aU-kAT" firstAttribute="top" secondItem="UyL-tK-Y6w" secondAttribute="bottom" id="7t5-eO-rB5"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HCP-TH-Jrx" secondAttribute="trailing" priority="750" constant="10" id="9cv-ke-dsk"/>
+                    <constraint firstItem="UyL-tK-Y6w" firstAttribute="leading" secondItem="F9e-aU-kAT" secondAttribute="leading" id="BTQ-ee-hIf"/>
+                    <constraint firstItem="HCP-TH-Jrx" firstAttribute="centerY" secondItem="F9e-aU-kAT" secondAttribute="centerY" id="GZ9-y2-HFR"/>
+                    <constraint firstItem="HCP-TH-Jrx" firstAttribute="height" secondItem="F9e-aU-kAT" secondAttribute="height" id="JA7-KW-LHA"/>
+                    <constraint firstItem="UyL-tK-Y6w" firstAttribute="top" secondItem="tIJ-Gl-GXb" secondAttribute="topMargin" constant="1" id="ROO-ko-1AT"/>
+                    <constraint firstItem="eSB-iW-kHR" firstAttribute="centerY" secondItem="UyL-tK-Y6w" secondAttribute="centerY" id="RgA-xk-2qe"/>
+                    <constraint firstItem="17U-JL-ByD" firstAttribute="height" secondItem="F9e-aU-kAT" secondAttribute="height" id="gmc-kp-j6R"/>
+                    <constraint firstAttribute="centerX" secondItem="17U-JL-ByD" secondAttribute="centerX" id="hct-pg-Dzm"/>
+                    <constraint firstItem="HCP-TH-Jrx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="17U-JL-ByD" secondAttribute="trailing" constant="5" id="izX-fl-ARk"/>
+                    <constraint firstItem="HCP-TH-Jrx" firstAttribute="leading" secondItem="eSB-iW-kHR" secondAttribute="leading" id="jvk-9x-PjW"/>
+                    <constraint firstItem="F9e-aU-kAT" firstAttribute="leading" secondItem="tIJ-Gl-GXb" secondAttribute="leadingMargin" priority="750" constant="10" id="reu-vz-je6"/>
+                    <constraint firstItem="17U-JL-ByD" firstAttribute="width" secondItem="F9e-aU-kAT" secondAttribute="width" id="tm7-CD-L5I"/>
+                    <constraint firstItem="HCP-TH-Jrx" firstAttribute="width" secondItem="F9e-aU-kAT" secondAttribute="width" id="xU3-Ft-ASj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="OneImageVIew" destination="F9e-aU-kAT" id="TFC-n1-dBx"/>
+                <outlet property="ThreeImageView" destination="HCP-TH-Jrx" id="tRy-wI-QrV"/>
+                <outlet property="TwoImageView" destination="17U-JL-ByD" id="d72-45-fnT"/>
+            </connections>
+            <point key="canvasLocation" x="438.5" y="338"/>
+        </tableViewCell>
+    </objects>
+</document>

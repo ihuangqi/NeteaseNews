@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReadViewController">
+            <connections>
+                <outlet property="_scrollView" destination="Jlj-pi-Pog" id="67y-cN-urq"/>
+                <outlet property="buttonWidth" destination="rH9-yB-avF" id="GPR-rx-dS7"/>
+                <outlet property="myReadButton" destination="2yO-IY-fnS" id="NN4-qW-95z"/>
+                <outlet property="recommendButton" destination="fRy-S8-3cq" id="0BS-qn-rEE"/>
+                <outlet property="scrollIndicator" destination="ZNv-iW-te7" id="vSJ-ZN-JZ4"/>
+                <outlet property="view" destination="iN0-l3-epB" id="k2Z-3V-gbs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOo-rG-XG2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRy-S8-3cq">
+                            <rect key="frame" x="20" y="26" width="80" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="rH9-yB-avF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="16"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="推荐阅读">
+                                <color key="titleColor" red="0.95686274510000002" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="recomendButtonClick:" destination="-1" eventType="touchUpInside" id="P9B-N5-qVd"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yO-IY-fnS">
+                            <rect key="frame" x="100" y="24" width="80" height="32"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="我的订阅">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="mySubscrobeButtonClick:" destination="-1" eventType="touchUpInside" id="Clh-pb-amS"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5x-Ti-Mmm">
+                            <rect key="frame" x="20" y="57" width="80" height="3"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="3" id="ZDg-wO-AOJ"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f8-rZ-Swb">
+                            <rect key="frame" x="330" y="28" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="DeW-0C-B4b"/>
+                                <constraint firstAttribute="height" constant="25" id="Jux-jE-qzA"/>
+                            </constraints>
+                            <state key="normal" image="biz_news_media_column_tabpager_indicator_edit_normal.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="allSubscribeButtonClick:" destination="-1" eventType="touchUpInside" id="o5U-jz-o04"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.8901960784313725" green="0.16078431372549021" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="M5x-Ti-Mmm" secondAttribute="bottom" id="1gm-4A-bhN"/>
+                        <constraint firstItem="2yO-IY-fnS" firstAttribute="leading" secondItem="fRy-S8-3cq" secondAttribute="trailing" id="6aa-lB-cLf"/>
+                        <constraint firstItem="fRy-S8-3cq" firstAttribute="width" secondItem="2yO-IY-fnS" secondAttribute="width" id="BAz-rM-uhX"/>
+                        <constraint firstAttribute="centerY" secondItem="fRy-S8-3cq" secondAttribute="centerY" constant="-10" id="Lmg-eh-f8B"/>
+                        <constraint firstItem="fRy-S8-3cq" firstAttribute="centerY" secondItem="2yO-IY-fnS" secondAttribute="centerY" id="Ooo-R3-Tte"/>
+                        <constraint firstAttribute="centerY" secondItem="6f8-rZ-Swb" secondAttribute="centerY" constant="-10" id="TGQ-R8-3m3"/>
+                        <constraint firstItem="M5x-Ti-Mmm" firstAttribute="leading" secondItem="fRy-S8-3cq" secondAttribute="leading" id="ZNv-iW-te7"/>
+                        <constraint firstItem="M5x-Ti-Mmm" firstAttribute="width" secondItem="fRy-S8-3cq" secondAttribute="width" id="dmH-lJ-jND"/>
+                        <constraint firstItem="fRy-S8-3cq" firstAttribute="leading" secondItem="tOo-rG-XG2" secondAttribute="leading" constant="20" id="hVA-nB-3eo"/>
+                        <constraint firstAttribute="trailing" secondItem="6f8-rZ-Swb" secondAttribute="trailing" constant="20" id="xxM-TH-lfo"/>
+                        <constraint firstAttribute="height" constant="60" id="y4K-zd-vG6"/>
+                    </constraints>
+                </view>
+                <scrollView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlj-pi-Pog">
+                    <rect key="frame" x="0.0" y="60" width="375" height="558"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Jlj-pi-Pog" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2f6-wN-FeL"/>
+                <constraint firstItem="tOo-rG-XG2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Y6-h5-cYo"/>
+                <constraint firstItem="Jlj-pi-Pog" firstAttribute="top" secondItem="tOo-rG-XG2" secondAttribute="bottom" id="8Fm-a2-0Br"/>
+                <constraint firstItem="tOo-rG-XG2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nq7-1Q-d4Q"/>
+                <constraint firstAttribute="bottom" secondItem="Jlj-pi-Pog" secondAttribute="bottom" id="Qar-H0-lg4"/>
+                <constraint firstAttribute="trailing" secondItem="Jlj-pi-Pog" secondAttribute="trailing" id="bEK-bM-yls"/>
+                <constraint firstAttribute="trailing" secondItem="tOo-rG-XG2" secondAttribute="trailing" id="yOA-Y1-u25"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="548" y="458"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="biz_news_media_column_tabpager_indicator_edit_normal.png" width="40" height="40"/>
+    </resources>
+</document>

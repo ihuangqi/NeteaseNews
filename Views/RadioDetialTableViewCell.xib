@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="129" id="KGk-i7-Jjw" customClass="RadioDetialTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="383" height="129"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8T-kN-3X4">
+                        <rect key="frame" x="8" y="8" width="367" height="112"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1W-Ig-m27">
+                                <rect key="frame" x="329" y="10" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iiQ-F6-eOi"/>
+                                    <constraint firstAttribute="width" constant="30" id="sQN-Pf-MnK"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadButtoClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1GR-Nn-1wz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzK-IZ-zxZ">
+                                <rect key="frame" x="239" y="45" width="120" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="sRR-nc-rB3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fwf-FV-day">
+                                <rect key="frame" x="10" y="52" width="209" height="2"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biz_audio_play_list_current_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="7lL-Pl-l8q">
+                                <rect key="frame" x="5" y="10" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="KKR-oy-aIX"/>
+                                    <constraint firstAttribute="height" constant="30" id="sfj-lq-Lwx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUw-Zj-QbW">
+                                <rect key="frame" x="40" y="10" width="42" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已下载" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glL-fN-mcE">
+                                <rect key="frame" x="40" y="43" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="glL-fN-mcE" firstAttribute="leading" secondItem="ZUw-Zj-QbW" secondAttribute="leading" id="40c-CN-F8k"/>
+                            <constraint firstItem="RzK-IZ-zxZ" firstAttribute="trailing" secondItem="a1W-Ig-m27" secondAttribute="trailing" id="5JW-cW-bW4"/>
+                            <constraint firstItem="glL-fN-mcE" firstAttribute="centerY" secondItem="fwf-FV-day" secondAttribute="centerY" id="5NP-2T-8Jc"/>
+                            <constraint firstItem="fwf-FV-day" firstAttribute="centerY" secondItem="RzK-IZ-zxZ" secondAttribute="centerY" constant="0.5" id="7HY-la-UM4"/>
+                            <constraint firstItem="a1W-Ig-m27" firstAttribute="centerY" secondItem="ZUw-Zj-QbW" secondAttribute="centerY" id="821-6f-fFy"/>
+                            <constraint firstItem="7lL-Pl-l8q" firstAttribute="centerY" secondItem="ZUw-Zj-QbW" secondAttribute="centerY" id="DS3-Ka-9AT"/>
+                            <constraint firstItem="7lL-Pl-l8q" firstAttribute="top" secondItem="l8T-kN-3X4" secondAttribute="top" constant="10" id="EtK-jN-obc"/>
+                            <constraint firstItem="RzK-IZ-zxZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="a1W-Ig-m27" secondAttribute="bottom" constant="5" id="Hes-jT-5ub"/>
+                            <constraint firstItem="fwf-FV-day" firstAttribute="leading" secondItem="l8T-kN-3X4" secondAttribute="leading" constant="10" id="NCB-5N-F5m"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RzK-IZ-zxZ" secondAttribute="bottom" id="ZVo-Bp-fkJ"/>
+                            <constraint firstAttribute="trailing" secondItem="a1W-Ig-m27" secondAttribute="trailing" constant="8" id="Zp6-U7-0QD"/>
+                            <constraint firstItem="7lL-Pl-l8q" firstAttribute="leading" secondItem="l8T-kN-3X4" secondAttribute="leading" constant="5" id="g3L-iM-UDm"/>
+                            <constraint firstItem="RzK-IZ-zxZ" firstAttribute="top" secondItem="ZUw-Zj-QbW" secondAttribute="bottom" constant="5" id="gwH-Na-0UU"/>
+                            <constraint firstItem="a1W-Ig-m27" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZUw-Zj-QbW" secondAttribute="trailing" constant="10" id="kgv-dV-1bc"/>
+                            <constraint firstItem="ZUw-Zj-QbW" firstAttribute="leading" secondItem="7lL-Pl-l8q" secondAttribute="trailing" constant="5" id="tI7-4q-7Or"/>
+                            <constraint firstItem="RzK-IZ-zxZ" firstAttribute="leading" secondItem="fwf-FV-day" secondAttribute="trailing" constant="20" id="xWu-NY-ds6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="l8T-kN-3X4" secondAttribute="trailing" id="Ha4-wb-R6k"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="l8T-kN-3X4" secondAttribute="bottom" id="JlG-ha-prp"/>
+                    <constraint firstItem="l8T-kN-3X4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="KUH-kC-w9H"/>
+                    <constraint firstItem="l8T-kN-3X4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="VX8-A9-320"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="downloadButton" destination="a1W-Ig-m27" id="3O5-kG-KME"/>
+                <outlet property="downloadLabel" destination="glL-fN-mcE" id="TZU-xr-Efy"/>
+                <outlet property="downloadProgress" destination="fwf-FV-day" id="XN8-8b-6QN"/>
+                <outlet property="iconVIew" destination="7lL-Pl-l8q" id="gsO-6X-tow"/>
+                <outlet property="timeLabel" destination="RzK-IZ-zxZ" id="cn3-xm-wcK"/>
+                <outlet property="titleLabel" destination="ZUw-Zj-QbW" id="21K-w8-7d1"/>
+            </connections>
+            <point key="canvasLocation" x="609.5" y="211.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="biz_audio_play_list_current_icon.png" width="46" height="46"/>
+    </resources>
+</document>
