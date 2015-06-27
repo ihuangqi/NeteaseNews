@@ -12,21 +12,21 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="开机动画">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biz_ad_new_version1_img1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="pxU-oB-uHO">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="biz_new_version_content.png" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-b1-A3C">
-                    <rect key="frame" x="114" y="134" width="147" height="300"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" image="biz_new_version_content.png" translatesAutoresizingMaskIntoConstraints="NO" id="7hj-b1-A3C">
+                    <rect key="frame" x="227" y="101" width="147" height="300"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="ME5-rK-h9B"/>
                         <constraint firstAttribute="width" secondItem="7hj-b1-A3C" secondAttribute="height" multiplier="317:648" id="mAx-bT-LgA"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVf-wq-sZJ">
-                    <rect key="frame" x="315" y="60" width="40" height="40"/>
+                    <rect key="frame" x="540" y="60" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="IVf-wq-sZJ" secondAttribute="height" multiplier="83:84" id="f6a-7c-tBK"/>
                         <constraint firstAttribute="width" constant="40" id="ruK-Ti-3KE"/>
@@ -36,7 +36,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLp-Mk-Qst">
-                    <rect key="frame" x="265" y="60" width="40" height="40"/>
+                    <rect key="frame" x="490" y="60" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="LLp-Mk-Qst" secondAttribute="height" multiplier="83:84" id="Iwr-eY-92L"/>
                         <constraint firstAttribute="width" constant="40" id="fTP-bM-Gbl"/>
@@ -46,7 +46,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-ql-fhd">
-                    <rect key="frame" x="87" y="579" width="200" height="48"/>
+                    <rect key="frame" x="200" y="512" width="200" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="M4P-KM-cUD"/>
                         <constraint firstAttribute="width" secondItem="5R8-ql-fhd" secondAttribute="height" multiplier="372:89" id="iCb-ep-AGT"/>
@@ -74,14 +74,13 @@
                 <constraint firstAttribute="centerX" secondItem="7hj-b1-A3C" secondAttribute="centerX" id="xLN-jH-r4l"/>
                 <constraint firstAttribute="trailing" secondItem="IVf-wq-sZJ" secondAttribute="trailing" constant="20" id="xzq-wY-di9"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
         <view contentMode="scaleToFill" id="nY3-pF-mwi" userLabel="开机画面">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="biz_about_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pyk-tR-hRd">
-                    <rect key="frame" x="97" y="551" width="180" height="76"/>
+                    <rect key="frame" x="210" y="484" width="180" height="76"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,7 +88,6 @@
                 <constraint firstAttribute="centerX" secondItem="pyk-tR-hRd" secondAttribute="centerX" constant="0.5" id="yLf-eF-Rrh"/>
                 <constraint firstAttribute="bottom" secondItem="pyk-tR-hRd" secondAttribute="bottom" constant="40" id="z4e-0U-eld"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="497.5" y="1174.5"/>
         </view>
     </objects>

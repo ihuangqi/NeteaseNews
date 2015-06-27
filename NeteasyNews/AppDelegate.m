@@ -137,23 +137,35 @@
     tabBarC.viewControllers= @[newsNC,readVC,mediaVC,discoveryVC,meVC];
 
     tabBarC.tabBar.backgroundColor = kDefanltBackgroundColor;
-    tabBarC.selectedIndex = 4;
+    tabBarC.selectedIndex = 0;
 
     self.window.rootViewController = tabBarC;
 
     UIView *view=[[UINib nibWithNibName:@"StartUp" bundle:nil] instantiateWithOwner:self options:nil][1];
+    view.frame = [UIScreen mainScreen].bounds;
     [self.window addSubview:view];
     [self.window bringSubviewToFront:view];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [NSThread sleepForTimeInterval:3];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:0.5 animations:^{
-                view.transform = CGAffineTransformMakeScale(0.01, 0.01);
-                view.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2,[UIScreen mainScreen].bounds.size.height/2);
-            } completion:^(BOOL finished) {
+//            [UIView animateWithDuration:0.5 animations:^{
+//                view.transform = CGAffineTransformMakeScale(0.01, 0.01);
+//                view.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2,[UIScreen mainScreen].bounds.size.height/2);
+//            } completion:^(BOOL finished) {
+//                [view removeFromSuperview];
+//            }];
+            NSArray *array = @[@"cameraIris",@"cube",@"fade",@"moveIn",@"oglFlip",@"pageCurl",@"pageUnCurl",@"push",@"reveal",@"rippleEffect",@"suckEffect"];
+            CATransition *transition = [[CATransition alloc] init];
+            transition.duration = 1;
+            transition.type = array[arc4random()%array.count];
+            view.backgroundColor = [UIColor clearColor];
+            [view.subviews[0] removeFromSuperview];
+            [view.layer addAnimation:transition forKey:nil];
+            dispatch_async(dispatch_queue_create("HuangQi", DISPATCH_QUEUE_SERIAL), ^{
+                [NSThread sleepForTimeInterval:1];
                 [view removeFromSuperview];
-            }];
+            });
         });
     });
 }

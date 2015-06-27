@@ -10,6 +10,9 @@
 #import "NewsViewController.h"
 
 @interface AllCategoryViewController : UICollectionViewController
-@property (nonatomic, strong) NewsViewController* newsVC;
+@property (nonatomic, weak) id<NewsViewIndexChangeDelegate> delegate;
 -(NSInteger)selectedIndex;
+
+- (instancetype)initWithFrame:(CGRect)Rect;
+
 @end

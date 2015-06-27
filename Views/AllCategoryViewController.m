@@ -25,6 +25,8 @@
 
     NSIndexPath *_toIndexPath;
     NSIndexPath *_fromIndexPath;
+
+    CGRect _frame;
 }
 
 @end
@@ -36,8 +38,8 @@
     return self;
 }
 
-- (instancetype)init
-{
+- (instancetype)initWithFrame:(CGRect)frame{
+    _frame = frame;
     layout = [[LXReorderableCollectionViewFlowLayout alloc] init];
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
@@ -58,40 +60,40 @@
 
         [self.collectionView registerClass:[AllCategoryFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kAllCategoryFooterViewIdentifier];
         [self.collectionView registerClass:[AllCategoryHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kAllCategoryHeaderViewIdentifier];
-
     }
     return self;
 }
--(void)initButton{
-
-}
 -(void)viewDidLoad{
     dataSourceArray = [CategoryModel GetAllModel];
-
-    UIView *view = self.view.superview;
+    self.view.frame = _frame;
+    UIView *view = self.view;
     UIButton *catrgroyArrowButton = [[UIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 30 + 5, 5, 20, 20)];
     [catrgroyArrowButton setBackgroundImage:[UIImage imageNamed:@"night_biz_tie_comment_expand_arrow"] forState:UIControlStateNormal];
     [catrgroyArrowButton addTarget:self action:@selector(catrgroyArrowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     catrgroyArrowButton.tag = HQCatrgroyArrowButtonTag;
     [view addSubview:catrgroyArrowButton];
     [view bringSubviewToFront:catrgroyArrowButton];
-
+}
+-(void)viewWillAppear:(BOOL)animated{
+    UIView *view = self.view;
     CGRect frame = view.frame;
     frame.size.height = 20;
     view.frame = frame;
-    [UIView animateWithDuration:0.5 animations:^{
-        CGRect frame = view.frame;
-        frame.size.height = self.view.frame.size.height;
-        view.frame = frame;
-        catrgroyArrowButton.transform = CGAffineTransformMakeRotation(M_PI);
-    }];
-
 
 }
-- (void)catrgroyArrowButtonClick:(UIButton *)catrgroyArrowButton {
-    UIView *view = self.view.superview;
+-(void)viewDidAppear:(BOOL)animated{
+    UIButton *catrgroyArrowButton = (UIButton *)[self.view viewWithTag:HQCatrgroyArrowButtonTag];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.frame = _frame;
+        catrgroyArrowButton.transform = CGAffineTransformMakeRotation(M_PI);
+    }];
+}
+- (void)catrgroyArrowButtonClick:(UIButton *)catrgroyArrowButton{
+    UIView *view = self.view;
     [CategoryModel writeToFile];
-//    [self categoryButtonClick:(UIButton *)[self.view viewWithTag:allCategoryVC.selectedIndex + HQCategoryButtonFirstTag]];
+    if ([_delegate respondsToSelector:@selector(indexSelected:animated:)]) {
+        [_delegate indexSelected:self.selectedIndex animated:NO];
+    }
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
         CGRect frame = view.frame;
         frame.size.height = 20;
@@ -181,7 +183,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     _toIndexPath = indexPath;
-    [_newsVC newsViewMoveToIndex:_toIndexPath.row FromIndex:_fromIndexPath.row];
+    [_delegate newsViewMoveToIndex:_toIndexPath.row FromIndex:_fromIndexPath.row];
     [self.collectionView reloadData];
     NSLog(@"indexPath={%ld}",indexPath.row);
     NSLog(@"did end drag");
@@ -190,6 +192,8 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     CategoryModel *model = dataSourceArray[indexPath.row];
     [CategoryModel setSelectedModel:model];
+
+    [self catrgroyArrowButtonClick:(UIButton *)[self.view viewWithTag:HQCatrgroyArrowButtonTag]];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{

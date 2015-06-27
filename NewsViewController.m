@@ -43,7 +43,7 @@
 
     AllCategoryViewController *allCategoryVC;
 
-    BOOL isCategoryButtonClilk;
+    BOOL isAddedNewView;
 }
 @end
 @implementation NewsViewController
@@ -67,8 +67,7 @@
 
     [self initCategoryNameView:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     [self initCategoryNewsScrollView:CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height - 30 - 48 - 65)];
-
-    isCategoryButtonClilk = NO;
+    isAddedNewView = NO;
 }
 
 -(void)initCategoryNewsScrollView:(CGRect)rect{
@@ -80,26 +79,15 @@
     categoryNewsScrollView.showsVerticalScrollIndicator = NO;
     categoryNewsScrollView.showsHorizontalScrollIndicator = NO;
 
-    UIView *view1 = [[UIView alloc] initWithFrame:rect];
-    [categoryNewsScrollView addSubview:view1];
-    rect.origin.x += rect.size.width;
-    view1.backgroundColor = kDefanltBackgroundColor;
-    NSDictionary *parameter = @{kCategoryModelKey:categoryModelArray[0],kRootControllerKey:self.navigationController};
-
-    NewsView *newsView = [[NewsView alloc] initWithFrame:view1.bounds WithParameterDictionary:parameter];
-    newsView.rootViewController = self.navigationController;
-    [view1 addSubview:newsView];
-
-    //[categoryNewsViewArray addObject:view1];
-    view1.tag = HQCategoryNewsViewFirstTag + 0;
-
-    for (int i = 1; i < categoryModelArray.count; i ++) {
+    for (int i = 0; i < categoryModelArray.count; i ++) {
         UIView *view2 = [[UIView alloc] initWithFrame:rect];
         view2.backgroundColor = kDefanltBackgroundColor;
         view2.tag = HQCategoryNewsViewFirstTag+i;
         [categoryNewsScrollView addSubview:view2];
         rect.origin.x += rect.size.width;
     }
+    [self addNewsView:0];
+    [self addNewsView:1];
     [self.view addSubview:categoryNewsScrollView];
     categoryNewsScrollView.contentSize = CGSizeMake(rect.origin.x, rect.size.height);
 }
@@ -166,17 +154,19 @@
     int pitch = categoryNameIndicateView.frame.size.width + kCategoryNameButtonSpace;
     float contentXOffset = scrollView.contentOffset.x;
     float deltaMoveX = contentXOffset - lastContentXOffset;
+    int lastPage = (lastContentXOffset + categoryNewsScrollView.frame.size.width/2) / categoryNewsScrollView.frame.size.width;
     lastContentXOffset = contentXOffset;
+
     deltaMoveX = deltaMoveX / scrollView.frame.size.width * pitch;
     CGRect frame = categoryNameIndicateView.frame;
     frame.origin.x += deltaMoveX;
     categoryNameIndicateView.frame = frame;
 
+
     int page = (contentXOffset + categoryNewsScrollView.frame.size.width/2) / categoryNewsScrollView.frame.size.width;
 
-    if (page <= categoryModelArray.count - 1  && isCategoryButtonClilk == NO) {
+    if (page <= categoryModelArray.count - 1  && lastPage != page) {
         [self addNewsView:page];
-
         if (page < categoryModelArray.count - 1) {
             [self addNewsView:page + 1];
         }
@@ -187,17 +177,16 @@
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 //    NSLog(@"&&&&&&&&&结束滚动");
+
 }
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 
 //    NSLog(@"++++++++++++结束减速");
     [self newsScrollViewMove:scrollView.contentOffset.x];
-    isCategoryButtonClilk = NO;
 }
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
 //    NSLog(@"=========结束滚动动画");
     [self newsScrollViewMove:scrollView.contentOffset.x];
-    isCategoryButtonClilk = NO;
 
 
 }
@@ -236,19 +225,9 @@
 }
 
 - (void)categoryButtonClick:(UIButton *)sender {
-
-    UIButton *button = (UIButton *)[self.view viewWithTag:HQCategoryButtonFirstTag + lastSelectButtonIndex];
-    button.selected = NO;
-
-
-
-    sender.selected = YES;
-    lastSelectButtonIndex = sender.tag - HQCategoryButtonFirstTag;
-    NSInteger index = sender.tag - 1000 - 100;
-    isCategoryButtonClilk = YES;
-    int width = categoryNewsScrollView.frame.size.width;
-    [categoryNewsScrollView setContentOffset:CGPointMake(index * width, 0) animated:YES];
-    [self addNewsView:index];
+    NSInteger index = sender.tag - HQCategoryButtonFirstTag;
+    [self indexSelected:index animated:YES];
+//    [self addNewsView:index];
 }
 
 -(void)setLocationForIndicateView:(NSInteger)index{
@@ -307,49 +286,27 @@
     UIView *view = [self.view viewWithTag:HQAllCatrgroyViewTag];
 //    UIButton *catrgroyArrowButton = (UIButton *)[self.view viewWithTag:HQCatrgroyArrowButtonTag];
     if (view == nil) {
-        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49)];
-        [self.view addSubview:view];
+        [CategoryModel setSelectedModel:categoryModelArray[lastSelectButtonIndex]];
+        allCategoryVC = [[AllCategoryViewController alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49)];
+        view = allCategoryVC.view;
         view.backgroundColor = kDefanltBackgroundColor;
         view.tag = HQAllCatrgroyViewTag;
+        allCategoryVC.delegate = self;
+        [self.view addSubview:view];
+    }
+}
 
-
-        allCategoryVC = [[AllCategoryViewController alloc] init];
-        [CategoryModel setSelectedModel:categoryModelArray[lastSelectButtonIndex]];
-
-        allCategoryVC.newsVC = self;
-        allCategoryVC.view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height - 0);
-        allCategoryVC.view.contentMode = UIViewContentModeTop;
-        view.translatesAutoresizingMaskIntoConstraints = NO;
-        view.autoresizingMask = UIViewAutoresizingNone;
-        [view addSubview:allCategoryVC.view];
-
-//        catrgroyArrowButton = [[UIButton alloc] initWithFrame:CGRectMake(view.frame.size.width - 30 + 5, 5, 20, 20)];
-//        [catrgroyArrowButton setBackgroundImage:[UIImage imageNamed:@"night_biz_tie_comment_expand_arrow"] forState:UIControlStateNormal];
-//        [catrgroyArrowButton addTarget:self action:@selector(catrgroyArrowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-//        catrgroyArrowButton.tag = HQCatrgroyArrowButtonTag;
-//        [view addSubview:catrgroyArrowButton];
-//        [view bringSubviewToFront:catrgroyArrowButton];
-//
-//        CGRect frame = view.frame;
-//        frame.size.height = 20;
-//        view.frame = frame;
-//        [UIView animateWithDuration:0.5 animations:^{
-//            CGRect frame = view.frame;
-//            frame.size.height = self.view.frame.size.height;
-//            view.frame = frame;
-//            catrgroyArrowButton.transform = CGAffineTransformMakeRotation(M_PI);
-//        }];
-    }else{
-//        [CategoryModel writeToFile];
-//        [self categoryButtonClick:(UIButton *)[self.view viewWithTag:allCategoryVC.selectedIndex + HQCategoryButtonFirstTag]];
-//        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-//            CGRect frame = view.frame;
-//            frame.size.height = 20;
-//            view.frame = frame;
-//            catrgroyArrowButton.transform = CGAffineTransformIdentity;
-//        } completion:^(BOOL finished) {
-//            [view removeFromSuperview];
-//        }];
+-(void)indexSelected:(NSInteger)index animated:(BOOL)isAnimated{
+    UIButton *categoryButton;
+    categoryButton = (UIButton *)[self.view viewWithTag:HQCategoryButtonFirstTag + lastSelectButtonIndex];
+    categoryButton.selected = NO;
+    lastSelectButtonIndex = index;
+    categoryButton = (UIButton *)[self.view viewWithTag:HQCategoryButtonFirstTag + lastSelectButtonIndex];
+    categoryButton.selected = YES;
+    int width = categoryNewsScrollView.frame.size.width;
+    [categoryNewsScrollView setContentOffset:CGPointMake(index * width, 0) animated:isAnimated];
+    if (!isAnimated) {
+        [self setLocationForIndicateView:index];
     }
 }
 

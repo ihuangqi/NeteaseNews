@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsViewController : UIViewController
+@protocol NewsViewIndexChangeDelegate <NSObject>
+
+-(void)newsViewMoveToIndex:(NSInteger)toIndex FromIndex:(NSInteger)fromIndex;
+-(void)indexSelected:(NSInteger)index animated:(BOOL)isAnimated;
+
+@end
+
+@interface NewsViewController : UIViewController<NewsViewIndexChangeDelegate>
 -(void)newsViewMoveToIndex:(NSInteger)toIndex FromIndex:(NSInteger)fromIndex;
 @end
