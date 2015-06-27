@@ -12,7 +12,11 @@
 +(void)GetDataFromAFNetworkingWithURL:(NSString *)urlString CallBack:(void (^)(id responseObject))callBack{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+    manager.requestSerializer.timeoutInterval = 5;
+    
     [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
         id response = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         callBack(response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -34,23 +34,27 @@
 }
 @end
 @implementation ReadViewController
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-//    CGRect frame = _scrollView.frame;
-//    frame.size.width = [UIScreen mainScreen].bounds.size.width;
-//    _scrollView.frame = frame;
+    self.view.frame = [UIScreen mainScreen].bounds;
+    CGRect frame = _scrollView.frame;
+    frame.size.width = self.view.frame.size.width;
+    _scrollView.frame = frame;
+
     CGRect bounds = _scrollView.bounds;
     _recommendTableView = [[RecommendTableView alloc] initWithFrame:bounds RootViewControler:self];
     [_scrollView addSubview:_recommendTableView];
+    _recommendTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 
     bounds.origin.x += bounds.size.width;
 
     _mySubscribeTableView =[[MySubscribeTableView alloc] initWithFrame:bounds RootViewControler:self];
     [_scrollView addSubview:_mySubscribeTableView];
+    _mySubscribeTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 
     _scrollView.contentSize = CGSizeMake(bounds.origin.x + bounds.size.width,bounds.size.height);
     _scrollView.delegate = self;
-
     [recommendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [myReadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
 
@@ -60,11 +64,6 @@
     recommendButton.selected = YES;
 
 }
-//-(void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//    [_mySubscribeTableView reloadData];
-//    [_recommendTableView reloadData];
-//}
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView != _scrollView) {
         return;

@@ -28,8 +28,7 @@
     __weak IBOutlet NSLayoutConstraint *scrollIndicatorConstraint;
     __weak IBOutlet NSLayoutConstraint *buttonWidth;
 
-
-
+    NSLock *lock;
 }
 @end
 
@@ -37,32 +36,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    CGRect frame = _scrollView.frame;
-//    frame.size.width = [UIScreen mainScreen].bounds.size.width;
-//    _scrollView.frame = frame;
-    
+    lock = [[NSLock alloc] init];
+
+    self.view.frame = [UIScreen mainScreen].bounds;
+    CGRect frame = _scrollView.frame;
+    frame.size.width = self.view.frame.size.width;
+    _scrollView.frame = frame;
+
     videoTableView = [[VideoTableView alloc] initWithFrame:_scrollView.bounds];
+    videoTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     videoTableView.rootViewController = self;
     [_scrollView addSubview:videoTableView];
 
     _scrollView.contentSize = CGSizeMake(2*_scrollView.frame.size.width, _scrollView.frame.size.height);
+    NSLog(@"%@",NSStringFromCGSize(_scrollView.contentSize));
     _scrollView.pagingEnabled = YES;
     _scrollView.bounces = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.delegate = self;
-    
-    
+
+
     _scrollView.contentOffset = CGPointMake(0, 0);
-    
+
     [videoButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [radioButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    
-    
+
+
     [videoButton setTitleColor:[UIColor colorWithWhite:0.667 alpha:1.000] forState:UIControlStateNormal];
     [radioButton setTitleColor:[UIColor colorWithWhite:0.667 alpha:1.000] forState:UIControlStateNormal];
-    
+
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -81,8 +84,7 @@
     scrollIndicatorConstraint.constant += deltaX * buttonWidth.constant / scrollView.frame.size.width;
     if ((offsetX + scrollView.frame.size.width / 2) / scrollView.frame.size.width >= 1) {
             if (!radioTableView) {
-                NSLock *lock = [[NSLock alloc] init];
-                if ([lock tryLock]) {            
+                if ([lock tryLock]) {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     radioTableView = [[RadioTableView alloc] initWithFrame:CGRectMake(scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -94,7 +96,7 @@
         }
         videoButton.selected = NO;
         radioButton.selected = YES;
-        
+
 
     }else{
         videoButton.selected = YES;

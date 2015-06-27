@@ -199,6 +199,7 @@
     if(!weatherVC){
         weatherVC = [[WeatherViewController alloc] init];
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        weatherVC.view.frame = view.frame;
         [view addSubview:weatherVC.view];
         view.clipsToBounds = YES;
         view.center = CGPointMake(view.center.x, view.center.y - 40);
