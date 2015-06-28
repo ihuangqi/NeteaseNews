@@ -13,4 +13,5 @@
 @interface NewsBaseCelll : UITableViewCell
 @property (nonatomic, weak) UIViewController* rootViewController;
 - (void)gotoDetialView:(NSDictionary *)dic;
+-(void)setImage:(UIImageView *)imageView UrlString:(NSString*)urlString;
 @end

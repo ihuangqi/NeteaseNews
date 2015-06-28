@@ -53,8 +53,8 @@
     // Configure the view for the selected state
 }
 -(void)setModel:(NSArray *)array{
-    SportsModel *sprotsModel1 = array[0];
-    SportsModel *sprotsModel2 = array[1];
+    SportsModel *sprotsModel1 = [array firstObject];
+    SportsModel *sprotsModel2 = [array lastObject];
 
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

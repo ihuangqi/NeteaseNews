@@ -11,7 +11,7 @@
 #import "BoBoModel.h"
 #import "UIImageView+WebCache.h"
 #import "WebViewController.h"
-
+#import "UIImageView+ImageLoading.h"
 
 @implementation EntertainmentCell
 
@@ -32,15 +32,10 @@
     BoBoModel *boboModel2 = modelArray[1];
     MuiscModel *muiscModel = modelArray[2];
 
-    [_OneImageVIew sd_setImageWithURL:[NSURL URLWithString:boboModel1.cover]];
-    [_TwoImageView sd_setImageWithURL:[NSURL URLWithString:boboModel2.cover]];
-    [_ThreeImageView sd_setImageWithURL:[NSURL URLWithString:muiscModel.imageUrl]];
 
-//    [_OneImageVIew addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoWebView:)]];
-//    [_TwoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoWebView:)]];
-//    [_ThreeImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoWebView:)]];
-//
-
+    [_OneImageVIew loadImageWithUrlString:boboModel1.cover];
+    [_TwoImageView loadImageWithUrlString:boboModel2.cover];
+    [_ThreeImageView loadImageWithUrlString:muiscModel.imageUrl];
 }
 -(void)gotoDetialView{
 

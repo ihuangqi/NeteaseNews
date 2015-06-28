@@ -14,7 +14,7 @@
 #import "ColumnsTableView.h"
 #import "UIImageView+SetWebPImage.h"
 #import "UILabel+setTimeText.h"
-
+#import "UIImageView+ImageLoading.h"
 
 
 
@@ -84,14 +84,15 @@
         NewsModel *newModel = _model.docs[i];
 
         titleLabel.text = newModel.title;
-        
+
 #define API @"http:s.cimg.163.com/pi/img3.cache.netease.com/m/newsapp/topic_icons/%@.png.48x2147483647.75.auto.webp"
         NSString *tid = _model.tid;
         NSString *url = [NSString stringWithFormat:API,tid];
-        [headerIconView setWebPImageFromURLString:url];            
-        
-        [iconView sd_setImageWithURL:[NSURL URLWithString:newModel.imgsrc]];
+        [headerIconView setWebPImageFromURLString:url];
 
+//        [iconView sd_setImageWithURL:[NSURL URLWithString:newModel.imgsrc]];
+        [iconView loadImageWithUrlString:newModel.imgsrc];
+        
         [timeLabel setTimeText:newModel.ptime DateFormatString:@"yyyy-MM-dd HH:mm:ss"];
 
         if (newModel.replyCount) {

@@ -11,6 +11,8 @@
 #import "UIImageView+SetWebPImage.h"
 #import "DetailViewController.h"
 #import "ColumnsTableView.h"
+#import "UIImageView+ImageLoading.h"
+
 
 @implementation RecommendCell
 {
@@ -21,19 +23,7 @@
     __weak IBOutlet UILabel *sourceLabel;
     __weak IBOutlet UIButton *goodButton;
     __weak IBOutlet NSLayoutConstraint *iconImageViewWidth;
-//    __weak IBOutlet UIView *threePictureView;
-//    __weak IBOutlet UIView *bigPictureView;
-//    __weak IBOutlet UIView *smallPictureView;
-//    __weak IBOutlet UIView *nonePictureView;
-//    UIView *threePictureView;
-//    UIView *bigPictureView;
-//    UIView *smallPictureView;
-//    UIView *nonePictureView;
 }
-//static UIView *threePictureView;
-//static UIView *bigPictureView;
-//static UIView *smallPictureView;
-//static UIView *nonePictureView;
 
 int spaceWidth = 2;
 - (void)awakeFromNib {
@@ -42,10 +32,7 @@ int spaceWidth = 2;
     containerView.layer.borderColor = [UIColor colorWithWhite:0.667 alpha:1.000].CGColor;
     containerView.layer.borderWidth = 1;
     containerView.layer.cornerRadius = 5;
-//    containerView.layer.shadowColor = [UIColor blackColor].CGColor;
-//    containerView.layer.shadowOffset = CGSizeMake(10, 10);
-//    containerView.layer.shadowRadius = 5;
-//    containerView.layer.shadowOpacity = 0.6;
+
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"biz_pc_account_register_btn_normal.9"] stretchableImageWithLeftCapWidth:10 topCapHeight:10]];
     self.backgroundView = imageView;
 }
@@ -53,20 +40,6 @@ int spaceWidth = 2;
     self = [super initWithCoder:coder];
     if (self) {
 
-//        static dispatch_once_t onceToken;
-//        dispatch_once(&onceToken, ^{
-//           {
-//                threePictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][0];
-//                bigPictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][1];
-//                smallPictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][2];
-//                nonePictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][3];
-//            }
-//        });
-//        [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:self options:nil];
-//        threePictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][0];
-//        bigPictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][1];
-//        smallPictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][2];
-//        nonePictureView = [[NSBundle mainBundle] loadNibNamed:@"PictureAndContent" owner:nil options:nil][3];
     }
     return self;
 }
@@ -88,9 +61,14 @@ int spaceWidth = 2;
         UIImageView* smallImageView1  =(UIImageView *)[view viewWithTag:12];
         UIImageView* smallImageView2  =(UIImageView *)[view viewWithTag:13];
 
-        [bigImageView sd_setImageWithURL:[NSURL URLWithString:_model.img]];
-        [smallImageView1 sd_setImageWithURL:[NSURL URLWithString:_model.imgnewextra[0]]];
-        [smallImageView2 sd_setImageWithURL:[NSURL URLWithString:_model.imgnewextra[1]]];
+        [bigImageView loadImageWithUrlString:_model.img];
+        [smallImageView1 loadImageWithUrlString:_model.imgnewextra[0]];
+        [smallImageView2 loadImageWithUrlString:_model.imgnewextra[1]];
+
+
+//        [bigImageView sd_setImageWithURL:[NSURL URLWithString:_model.img]];
+//        [smallImageView1 sd_setImageWithURL:[NSURL URLWithString:_model.imgnewextra[0]]];
+//        [smallImageView2 sd_setImageWithURL:[NSURL URLWithString:_model.imgnewextra[1]]];
 
     }else{
         NSString *string = _model.pixel;

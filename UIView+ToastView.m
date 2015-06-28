@@ -61,7 +61,6 @@ static UIView *lastToastView = nil;
     } completion:^(BOOL finished) {
         [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(hideToastView:) userInfo:toastView repeats:NO];
     }];
-
 }
 
 + (void)hideToastView:(NSTimer *)timer {

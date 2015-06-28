@@ -43,7 +43,8 @@
 
     AllCategoryViewController *allCategoryVC;
 
-    BOOL isAddedNewView;
+//    BOOL isAddedNewView;
+    BOOL isCategoryButtonClick;
 }
 @end
 @implementation NewsViewController
@@ -67,7 +68,7 @@
 
     [self initCategoryNameView:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     [self initCategoryNewsScrollView:CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height - 30 - 48 - 65)];
-    isAddedNewView = NO;
+//    isAddedNewView = NO;
 }
 
 -(void)initCategoryNewsScrollView:(CGRect)rect{
@@ -165,7 +166,7 @@
 
     int page = (contentXOffset + categoryNewsScrollView.frame.size.width/2) / categoryNewsScrollView.frame.size.width;
 
-    if (page <= categoryModelArray.count - 1  && lastPage != page) {
+    if (page <= categoryModelArray.count - 1  && lastPage != page && isCategoryButtonClick == NO) {
         [self addNewsView:page];
         if (page < categoryModelArray.count - 1) {
             [self addNewsView:page + 1];
@@ -187,6 +188,8 @@
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
 //    NSLog(@"=========结束滚动动画");
     [self newsScrollViewMove:scrollView.contentOffset.x];
+    isCategoryButtonClick = NO;
+
 
 
 }
@@ -228,7 +231,7 @@
 - (void)categoryButtonClick:(UIButton *)sender {
     NSInteger index = sender.tag - HQCategoryButtonFirstTag;
     [self indexSelected:index animated:YES];
-//    [self addNewsView:index];
+
 }
 
 -(void)setLocationForIndicateView:(NSInteger)index{
@@ -308,6 +311,9 @@
     [categoryNewsScrollView setContentOffset:CGPointMake(index * width, 0) animated:isAnimated];
     if (!isAnimated) {
         [self setLocationForIndicateView:index];
+    }else{
+        isCategoryButtonClick = YES;
+        [self addNewsView:index];
     }
 }
 

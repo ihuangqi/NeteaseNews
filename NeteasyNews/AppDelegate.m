@@ -13,6 +13,7 @@
 #import "UIImage+ScaleToSize.h"
 #import "ReadViewController.h"
 #import "DiscoveryViewController.h"
+#import "AFNetworkReachabilityManager.h"
 @interface AppDelegate (){
    BOOL isStopAnimation;
 }
@@ -25,6 +26,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
 
@@ -155,10 +159,11 @@
 //            } completion:^(BOOL finished) {
 //                [view removeFromSuperview];
 //            }];
-            NSArray *array = @[@"cameraIris",@"cube",@"fade",@"moveIn",@"oglFlip",@"pageCurl",@"pageUnCurl",@"push",@"reveal",@"rippleEffect",@"suckEffect"];
+            NSArray *array = @[@"cameraIris",@"cube",@"fade",@"moveIn",@"oglFlip",@"pageCurl",@"push",@"reveal",@"rippleEffect",@"suckEffect"];
             CATransition *transition = [[CATransition alloc] init];
             transition.duration = 1;
             transition.type = array[arc4random()%array.count];
+//            transition.type = @"pageUnCurl";
             view.backgroundColor = [UIColor clearColor];
             [view.subviews[0] removeFromSuperview];
             [view.layer addAnimation:transition forKey:nil];

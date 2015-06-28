@@ -25,6 +25,7 @@
 #import "MJRefresh.h"
 #import "DetailViewController.h"
 #import "UIView+ToastView.h"
+#import "UIImageView+ImageLoading.h"
 
 
 
@@ -145,13 +146,15 @@
             if (i == 0) {
                 rect.origin.x +=rect.size.width;
                 UIImageView *imageVIew = [[UIImageView alloc] initWithFrame:rect];
-                [imageVIew sd_setImageWithURL:[NSURL URLWithString:model.imgsrc] placeholderImage:nil];
+                [imageVIew loadImageWithUrlString:model.imgsrc];
+//                [imageVIew sd_setImageWithURL:[NSURL URLWithString:model.imgsrc] placeholderImage:nil];
                 [topicNewScrollView addSubview:imageVIew];
                 topicNewScrollView.pagingEnabled = YES;
                 rect.origin.x +=rect.size.width;
             }
             UIImageView *imageVIew = [[UIImageView alloc] initWithFrame:rect];
-            [imageVIew sd_setImageWithURL:[NSURL URLWithString:model.imgextra[i]] placeholderImage:nil];
+            [imageVIew loadImageWithUrlString:model.imgextra[i]];
+//            [imageVIew sd_setImageWithURL:[NSURL URLWithString:model.imgextra[i]] placeholderImage:nil];
             [topicNewScrollView addSubview:imageVIew];
             rect.origin.x +=rect.size.width;
         }
@@ -340,6 +343,9 @@
             if (array.count > 0) {
                 if (pageStart == 0) {
                     [_dataArray removeAllObjects];
+                }else
+                {
+                    [UIView showToaseViewWithText:@"已为你加载20条新闻!" Time:1];
                 }
                 for (NewsModel *model in array) {
                     model.categoryModel = categoryModel;
@@ -347,23 +353,21 @@
                 }
                 if (pageStart == 0) {
                     [self reloadTopNewsView];
-                }else
-                {
-                    [UIView showToaseViewWithText:@"已为你加载20条新闻!" Time:1];
                 }
                 [_tableView reloadData];
                 pageStart += 20;
                 _tableView.hidden = NO;
             }
-            [headerView endRefreshing];
-            isRequesting = NO;
-            [MBProgressHUD hideHUDForView:self animated:YES];
         } else if (responseObject == nil) {
-            if (pageStart == 0) {
+            if (pageStart == 0 && _dataArray.count == 0) {
                 [self netWorkConnectFailure];
             }
             [UIView showToaseViewWithText:@"网络不给力哦" Time:3];
         }
+
+        [headerView endRefreshing];
+        isRequesting = NO;
+        [MBProgressHUD hideHUDForView:self animated:YES];
     }];
 }
 - (void)gotoDetialView{

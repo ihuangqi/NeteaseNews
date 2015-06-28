@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "PlayerView.h"
+#import "UIImageView+ImageLoading.h"
+
 @implementation MediaCell
 static PlayerView *playerView;
 -(void)awakeFromNib{
@@ -27,7 +29,7 @@ static PlayerView *playerView;
     return self;
 }
 -(void)setModel:(MediaModel *)model{
-    if (model != nil && model == _model) {
+    if (model == _model) {
         return;
     }
     _model = model;
@@ -35,7 +37,9 @@ static PlayerView *playerView;
     _playTimeLabel.text = [_model.playCount stringValue];
     _replyCountLabel.text = [[_model.replyCount stringValue] stringByAppendingString:@"跟帖"];
 
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.cover]];
+//    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.cover]];
+    [_iconImageView loadImageWithUrlString:_model.cover];
+
     if (model.isPlaying == NO) {
         int time = [_model.length intValue];
         _timeLabel.text = [NSString stringWithFormat:@"%02d:%02d",time / 60,time % 60];

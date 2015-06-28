@@ -21,13 +21,11 @@
     __weak IBOutlet NSLayoutConstraint *buttonWidth;
     __weak IBOutlet UIScrollView *_scrollView;
 
-
     MySubscribeTableView *_mySubscribeTableView;
 
     RecommendTableView *_recommendTableView;
 
     float lastOffsetX;
-
 
     __weak IBOutlet UIButton *recommendButton;
     __weak IBOutlet UIButton *myReadButton;

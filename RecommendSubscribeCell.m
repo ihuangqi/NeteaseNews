@@ -12,6 +12,7 @@
 #import "UIImageView+SetWebPImage.h"
 #import "DetailViewController.h"
 #import "ColumnsTableView.h"
+#import "UIImageView+ImageLoading.h"
 
 @implementation RecommendSubscribeCell
 {
@@ -36,7 +37,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+
         [addSubButton setImage:[UIImage imageNamed:@"biz_plugin_manage_check"] forState:UIControlStateNormal];
         [addSubButton setImage:[UIImage imageNamed:@"biz_plugin_manage_check_pressed"] forState:UIControlStateHighlighted];
 
@@ -86,7 +87,7 @@
     [self addGestureRecognizer];
 }
 - (IBAction)addSubscibe:(id)sender {
-    
+
 }
 
 #pragma mark- 点击手势

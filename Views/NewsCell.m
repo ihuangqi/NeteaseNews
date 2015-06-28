@@ -9,10 +9,12 @@
 #import "NewsCell.h"
 #import "UIImageView+WebCache.h"
 #import "DetailViewController.h"
+#import "UIImageView+ImageLoading.h"
+
 @implementation NewsCell
 {
     __weak IBOutlet NSLayoutConstraint *videoTAGWidth;
-    
+
 }
 - (void)awakeFromNib
 {
@@ -27,7 +29,7 @@
 }
 - (void)setModel:(NewsModel *)newsModel
 {
-    if (newsModel && newsModel == _newsModel)
+    if (newsModel == _newsModel)
     {
         return;
     }
@@ -35,8 +37,8 @@
 
     if ([_newsModel.imgsrc length] > 0)
     {
-        [_iconView sd_setImageWithURL:[NSURL URLWithString:_newsModel.imgsrc] placeholderImage:nil];
-        _iconViewWidth.constant = 90;
+        [_iconView loadImageWithUrlString:_newsModel.imgsrc];
+         _iconViewWidth.constant = 90;
     }
     else
     {
@@ -59,20 +61,19 @@
     _replyCountConstraint.constant = 2;
 
     if([_newsModel.TAG isEqualToString:@"视频"]){
-        
+
         videoTAGWidth.constant = 20;
     }else{
         videoTAGWidth.constant = 0;
     }
-    
+
     [self showReplyCount:_newsModel.isShowPeplyCount];
     [self showTAG:_newsModel.showLoactionOfTag];
     [self showReplyCount:_newsModel.isShowPeplyCount];
     [self showNewPreadButton:_newsModel.isShowPeplyCount];
 }
 
-- (void)showTAG:(enum ShowLocation)showLocation
-{
+- (void)showTAG:(enum ShowLocation)showLocation{
     if (!_newsModel.TAG)
     {
         showLocation = ShowLocationNone;
@@ -127,8 +128,7 @@
     label.layer.borderColor = [UIColor colorWithWhite:0.298 alpha:1.000].CGColor;
     label.layer.borderWidth = 1;
 }
-- (void)showReplyCount:(BOOL)isShow
-{
+- (void)showReplyCount:(BOOL)isShow{
     if ([_newsModel.replyCount intValue] < 1)
     {
         isShow = false;
@@ -142,8 +142,7 @@
         _replyCountLabel.text = nil;
     }
 }
-- (void)showNewPreadButton:(BOOL)isShow
-{
+- (void)showNewPreadButton:(BOOL)isShow{
     if (_newsModel.isShowNewPreadButton == NO)
     {
         _newsPreadButton.hidden = YES;

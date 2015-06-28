@@ -8,6 +8,8 @@
 
 #import "ImgextraNewsCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageView+ImageLoading.h"
+
 @implementation ImgextraNewsCell
 
 - (void)awakeFromNib {
@@ -25,9 +27,15 @@
     }
     _newsModel = newsModel;
     _titleLabel.text = _newsModel.title;
-    [_oneImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.imgsrc] placeholderImage:nil];
-    [_twoImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.imgextra[0]] placeholderImage:nil];
-    [_threeImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.imgextra[1]] placeholderImage:nil];
+
+//    [self setImage:_oneImageView UrlString:_newsModel.imgsrc];
+//    [self setImage:_twoImageView UrlString:[_newsModel.imgextra firstObject]];
+//    [self setImage:_threeImageView UrlString:[_newsModel.imgextra lastObject]];
+
+    [_oneImageView loadImageWithUrlString:_newsModel.imgsrc];
+    [_twoImageView loadImageWithUrlString:[_newsModel.imgextra firstObject]];
+    [_threeImageView loadImageWithUrlString:[_newsModel.imgextra lastObject]];
+
 
     _replyCountLabel.text = nil;
     if (_newsModel.isShowPeplyCount) {
