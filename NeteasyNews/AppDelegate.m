@@ -15,6 +15,7 @@
 #import "DiscoveryViewController.h"
 #import "AFNetworkReachabilityManager.h"
 #include <math.h>
+#import "MyWindow.h"
 @interface AppDelegate (){
    BOOL isStopAnimation;
     CAEmitterLayer *mortor;
@@ -33,7 +34,7 @@
 
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window = [[MyWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
 
     [self.window makeKeyAndVisible];
@@ -197,74 +198,22 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    mortor = [CAEmitterLayer layer];
-    mortor.emitterPosition = CGPointMake(self.window.bounds.size.width/2, self.window.bounds.size.height/2);
-    mortor.emitterShape = kCAEmitterLayerCircle;
-    mortor.renderMode = kCAEmitterLayerAdditive;
-    mortor.birthRate = 0;
-    rocket = [CAEmitterCell emitterCell];
-
-    rocket.scale			= 0.6;
-    rocket.scaleSpeed		=-0.2;
-
-    rocket.emissionLongitude = - M_PI;
-    rocket.emissionLatitude = 0;
-    rocket.lifetime = 1;
-    rocket.birthRate = 10;
-    rocket.velocityRange = 50;
-    rocket.velocity = 100;
-
-//    rocket.emissionRange = M_PI/4;
-    rocket.redRange = 0.4;
-    rocket.greenRange = 0.4;
-    rocket.blueRange = 0.4;
-    rocket.alphaRange = 0.4;
-    rocket.greenSpeed =-0.1;	// shifting to blue
-    rocket.redSpeed	  =-0.1;
-    rocket.blueSpeed  = -0.1;
-    rocket.alphaSpeed =-0.1;
-
-
-    rocket.contents = (id)[UIImage imageNamed:@"tspark"].CGImage;
-    rocket.color = CGColorCreateCopy([UIColor colorWithRed:.6 green:.6 blue:.6 alpha:0.6].CGColor);
-    [rocket setName:@"rocket"];
-
-    mortor.emitterSize	= CGSizeMake(50, 0);
-    mortor.emitterMode	= kCAEmitterLayerOutline;
-    mortor.emitterShape	= kCAEmitterLayerCircle;
-    mortor.renderMode	= kCAEmitterLayerBackToFront;
-
-    mortor.emitterCells = [NSArray arrayWithObject:rocket];
-    [self.window.layer addSublayer:mortor];
 
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    UITouch *touch = [touches anyObject];
-    beganPoint = [touch locationInView:self.window];
-    mortor.emitterPosition = beganPoint;
 
-    rocket.birthRate	= 40;			// every triangle creates 20
-    rocket.velocity		= 50;
-    rocket.emissionLongitude = M_PI * 0.5;	// sideways to triangle vector
-    mortor.birthRate = 10;
 
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.window];
-    dispatch_async(dispatch_get_main_queue(), ^{
-//        rocket.birthRate		= 30;			// every triangle creates 20
-//        rocket.velocity			= 100;
-        mortor.emitterPosition = point;
-    });
+
 
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
+    
 }
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
+    
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

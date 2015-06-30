@@ -52,9 +52,6 @@
 
     [super viewDidLoad];
 
-
-
-
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"网易新闻";
     self.navigationController.navigationBar.translucent = NO;
