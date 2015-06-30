@@ -12,6 +12,8 @@
 {
     CAEmitterLayer *mortor;
     CAEmitterCell *rocket;
+    NSInteger viewCount;
+    BOOL isBegan;
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -20,7 +22,19 @@
     if (self != nil) [self initAnimation];
     return self;
 }
-
+- (NSInteger)getCountOfView:(UIView *)view{
+    NSInteger count = 0;
+    for (UIView *childView in view.subviews) {
+        count ++;
+        if (childView.subviews.count > 0) {
+            if ([childView isKindOfClass:[UIScrollView class]]) {
+                count += 40;
+            }
+            count += [self getCountOfView:childView];
+        }
+    }
+    return count;
+}
 - (id)initWithFrame:(CGRect)rect {
     // This covers programmatically-created windows.
     self = [super initWithFrame:rect];
@@ -41,7 +55,7 @@
 
     rocket.emissionLongitude = M_PI * 0.5;	// sideways to triangle vector
     rocket.emissionLatitude = 0;
-    rocket.lifetime = 1;
+    rocket.lifetime = 0.5;
     rocket.birthRate = 10;
     rocket.velocityRange = 50;
     rocket.velocity = 100;
@@ -74,15 +88,19 @@
     NSSet *allTouches = [event allTouches];
     for (UITouch *touch in [allTouches allObjects]) {
         CGPoint point = [touch locationInView:self];
+
+        if (!isBegan) {
+            viewCount = [self getCountOfView:self];
+        }
         switch (touch.phase) {
             case UITouchPhaseBegan:
             {
-
+                isBegan = YES;
                 [self.layer addSublayer:mortor];
 
-
                 mortor.emitterPosition = point;
-                rocket.birthRate	= 30;			// every triangle creates 20
+                NSInteger birthRate = (30 - viewCount/10 / 2 );
+                rocket.birthRate	= birthRate < 10 ? 10: birthRate;
                 rocket.velocity		= 50;
 
                 mortor.birthRate = 10;
@@ -92,7 +110,8 @@
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     mortor.emitterPosition = point;
-                    rocket.birthRate		= 20;			// every triangle creates 20
+                    NSInteger birthRate = (20 - viewCount/10 / 2 );
+                    rocket.birthRate	= birthRate < 10 ? 5: birthRate;
                     rocket.velocity			= 100;
                 });
                 break;
@@ -100,18 +119,21 @@
             case UITouchPhaseStationary:
             {
                 mortor.emitterPosition = point;
-                rocket.birthRate	= 30;			// every triangle creates 20
+                NSInteger birthRate = (30 - viewCount/10 / 2 );
+                rocket.birthRate	= birthRate < 10 ? 10: birthRate;
                 rocket.velocity		= 50;
 
                 break;
             }
             case UITouchPhaseEnded:
             {
+                isBegan = NO;
                 [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
                 break;
             }
             case UITouchPhaseCancelled:
             {
+                isBegan = NO;
                 [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
                 break;
             }
