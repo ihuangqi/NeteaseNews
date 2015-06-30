@@ -972,8 +972,6 @@
 				243B654D1B1EA09A0072F698 /* Images.xcassets */,
 				243B654F1B1EA09A0072F698 /* LaunchScreen.xib */,
 				243B65401B1EA09A0072F698 /* Supporting Files */,
-				24B4A5F41B4141F50042085F /* MyWindow.h */,
-				24B4A5F51B4141F50042085F /* MyWindow.m */,
 			);
 			name = NeteaseNews;
 			path = NeteasyNews;
@@ -982,6 +980,8 @@
 		243B65401B1EA09A0072F698 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24B4A5F41B4141F50042085F /* MyWindow.h */,
+				24B4A5F51B4141F50042085F /* MyWindow.m */,
 				243B65ED1B1EB2C10072F698 /* PrefixHeader.pch */,
 				243B65411B1EA09A0072F698 /* Info.plist */,
 				243B65421B1EA09A0072F698 /* main.m */,
