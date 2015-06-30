@@ -16,6 +16,7 @@
 #import "AFNetworkReachabilityManager.h"
 #include <math.h>
 #import "MyWindow.h"
+#import "TestViewController.h"
 @interface AppDelegate (){
    BOOL isStopAnimation;
     CAEmitterLayer *mortor;
@@ -136,7 +137,7 @@
                                                    selectedImage:[[[UIImage imageNamed:@"biz_navigation_tab_discovery_selected"]  scaleToSize:CGSizeMake(30, 30)]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
 
-    UIViewController *meVC = [[UIViewController alloc] init];
+    TestViewController *meVC = [[TestViewController alloc] init];
     meVC.view.backgroundColor = [UIColor blackColor];
     meVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我"
                                                     image:[[[UIImage imageNamed:@"biz_navigation_tab_pc"]  scaleToSize:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
@@ -210,10 +211,10 @@
 
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
+
 }
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    
+
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

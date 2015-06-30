@@ -8,8 +8,7 @@
 
 #import "MyWindow.h"
 
-@implementation MyWindow
-{
+@implementation MyWindow{
     CAEmitterLayer *mortor;
     CAEmitterCell *rocket;
     NSInteger viewCount;
@@ -61,17 +60,17 @@
     rocket.velocity = 100;
 
     //    rocket.emissionRange = M_PI/4;
-    rocket.redRange = 0.4;
-    rocket.greenRange = 0.4;
-    rocket.blueRange = 0.4;
-    rocket.alphaRange = 0.4;
-    rocket.greenSpeed =-0.1;	// shifting to blue
-    rocket.redSpeed	  =-0.1;
-    rocket.blueSpeed  = -0.1;
-    rocket.alphaSpeed =-0.1;
+    rocket.redRange = 0.5;
+    rocket.greenRange = 0.5;
+    rocket.blueRange = 0.5;
+    rocket.alphaRange = 0.5;
+//    rocket.greenSpeed =-0.1;	// shifting to blue
+//    rocket.redSpeed	  =-0.1;
+//    rocket.blueSpeed  = -0.1;
+    rocket.alphaSpeed =-0.2;
 
     rocket.contents = (id)[UIImage imageNamed:@"tspark"].CGImage;
-    rocket.color = CGColorCreateCopy([UIColor colorWithRed:.6 green:.6 blue:.6 alpha:0.6].CGColor);
+    rocket.color = CGColorCreateCopy([UIColor colorWithRed:.5 green:.5 blue:.5 alpha:0.5].CGColor);
     [rocket setName:@"rocket"];
 
     mortor.emitterSize	= CGSizeMake(50, 0);
@@ -96,14 +95,14 @@
             case UITouchPhaseBegan:
             {
                 isBegan = YES;
-                [self.layer addSublayer:mortor];
-
-                mortor.emitterPosition = point;
-                NSInteger birthRate = (30 - viewCount/10 / 2 );
-                rocket.birthRate	= birthRate < 10 ? 10: birthRate;
-                rocket.velocity		= 50;
-
-                mortor.birthRate = 10;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.layer addSublayer:mortor];
+                    mortor.emitterPosition = point;
+                    NSInteger birthRate = (30 - viewCount/10 / 2 );
+                    rocket.birthRate	= birthRate < 10 ? 10: birthRate;
+                    rocket.velocity		= 50;
+                    mortor.birthRate = 10;
+                });
                 break;
             }
             case UITouchPhaseMoved:
@@ -118,23 +117,28 @@
             }
             case UITouchPhaseStationary:
             {
-                mortor.emitterPosition = point;
-                NSInteger birthRate = (30 - viewCount/10 / 2 );
-                rocket.birthRate	= birthRate < 10 ? 10: birthRate;
-                rocket.velocity		= 50;
-
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    mortor.emitterPosition = point;
+                    NSInteger birthRate = (30 - viewCount/10 / 2 );
+                    rocket.birthRate	= birthRate < 10 ? 10: birthRate;
+                    rocket.velocity		= 50;
+                });
                 break;
             }
             case UITouchPhaseEnded:
             {
                 isBegan = NO;
-                [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
+                });
                 break;
             }
             case UITouchPhaseCancelled:
             {
                 isBegan = NO;
-                [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [mortor setValue:[NSNumber numberWithInteger:0] forKeyPath:@"birthRate"];
+                });
                 break;
             }
         }

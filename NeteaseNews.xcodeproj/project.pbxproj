@@ -306,6 +306,7 @@
 		24E6148E1B229D2F00C568DA /* CommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E6148D1B229D2F00C568DA /* CommentView.m */; };
 		24E614931B22A13600C568DA /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E614921B22A13600C568DA /* CommentModel.m */; };
 		24E614961B22AE7700C568DA /* biz_topic_micro_netease_big_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E614951B22AE7700C568DA /* biz_topic_micro_netease_big_type.png */; };
+		24E64D201B424D6400DED440 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E64D1F1B424D6400DED440 /* TestViewController.m */; };
 		24E6ABBF1B2860DC00505707 /* biz_pc_score_edit_bg.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 24E6ABBE1B2860DC00505707 /* biz_pc_score_edit_bg.9.png */; };
 		24E6ABC31B28662200505707 /* ColumnsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E6ABC11B28662200505707 /* ColumnsListCell.m */; };
 		24E6ABC41B28662200505707 /* ColumnsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E6ABC21B28662200505707 /* ColumnsListCell.xib */; };
@@ -779,6 +780,8 @@
 		24E614911B22A13600C568DA /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentModel.h; path = Model/CommentModel.h; sourceTree = "<group>"; };
 		24E614921B22A13600C568DA /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentModel.m; path = Model/CommentModel.m; sourceTree = "<group>"; };
 		24E614951B22AE7700C568DA /* biz_topic_micro_netease_big_type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biz_topic_micro_netease_big_type.png; sourceTree = "<group>"; };
+		24E64D1E1B424D6400DED440 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = SOURCE_ROOT; };
+		24E64D1F1B424D6400DED440 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = SOURCE_ROOT; };
 		24E6ABBE1B2860DC00505707 /* biz_pc_score_edit_bg.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biz_pc_score_edit_bg.9.png; sourceTree = "<group>"; };
 		24E6ABC01B28662200505707 /* ColumnsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColumnsListCell.h; path = Views/ColumnsListCell.h; sourceTree = "<group>"; };
 		24E6ABC11B28662200505707 /* ColumnsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColumnsListCell.m; path = Views/ColumnsListCell.m; sourceTree = "<group>"; };
@@ -980,8 +983,7 @@
 		243B65401B1EA09A0072F698 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				24B4A5F41B4141F50042085F /* MyWindow.h */,
-				24B4A5F51B4141F50042085F /* MyWindow.m */,
+				24E64D1D1B424BA200DED440 /* 测试 */,
 				243B65ED1B1EB2C10072F698 /* PrefixHeader.pch */,
 				243B65411B1EA09A0072F698 /* Info.plist */,
 				243B65421B1EA09A0072F698 /* main.m */,
@@ -1854,6 +1856,17 @@
 			name = "头像";
 			sourceTree = "<group>";
 		};
+		24E64D1D1B424BA200DED440 /* 测试 */ = {
+			isa = PBXGroup;
+			children = (
+				24B4A5F41B4141F50042085F /* MyWindow.h */,
+				24B4A5F51B4141F50042085F /* MyWindow.m */,
+				24E64D1E1B424D6400DED440 /* TestViewController.h */,
+				24E64D1F1B424D6400DED440 /* TestViewController.m */,
+			);
+			name = "测试";
+			sourceTree = "<group>";
+		};
 		24EA94B11B1FEC9400D4831E /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -2521,6 +2534,7 @@
 				243B65C91B1EB18E0072F698 /* AFHTTPSessionManager.m in Sources */,
 				248FEAFC1B25C3800080C001 /* RecommendSubscribeCell.m in Sources */,
 				24E1DD2A1B2A733A00F8ABB8 /* AdvertiseModel.m in Sources */,
+				24E64D201B424D6400DED440 /* TestViewController.m in Sources */,
 				243B65EB1B1EB18E0072F698 /* UIImageView+WebCache.m in Sources */,
 				243B65E21B1EB18E0072F698 /* SDWebImageDownloader.m in Sources */,
 				243B65D11B1EB18E0072F698 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

@@ -57,9 +57,7 @@
 - (instancetype)initWithFrame:(CGRect)frame WithParameterDictionary:(NSDictionary *)dic{
     self = [super initWithFrame:frame];
     if (self) {
-    
-        
-        
+
         self.tag = HQNewViewTag;
         _dataArray = [NSMutableArray new];
         customCellDataArray = [[NSMutableArray alloc] initWithCapacity:3];
