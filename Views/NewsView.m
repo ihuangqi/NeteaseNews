@@ -26,6 +26,7 @@
 #import "DetailViewController.h"
 #import "UIView+ToastView.h"
 #import "UIImageView+ImageLoading.h"
+#import "AppDelegate.h"
 
 
 
@@ -56,6 +57,9 @@
 - (instancetype)initWithFrame:(CGRect)frame WithParameterDictionary:(NSDictionary *)dic{
     self = [super initWithFrame:frame];
     if (self) {
+    
+        
+        
         self.tag = HQNewViewTag;
         _dataArray = [NSMutableArray new];
         customCellDataArray = [[NSMutableArray alloc] initWithCapacity:3];
@@ -185,8 +189,8 @@
     topicNewsPageController.currentPageIndicatorTintColor = [UIColor redColor];
     topicNewsPageController.numberOfPages = rect.origin.x / rect.size.width - 2;
     topicNewsPageController.currentPage = 0;
-
 }
+
 
 -(void)sendRequestWithAFNetworkingWithURL:(NSString *)url Select:(SEL)selector{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -411,5 +415,6 @@
     headerView.delegate = nil;
     headerView = nil;
 }
+
 
 @end

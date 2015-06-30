@@ -51,11 +51,14 @@
 -(void)viewDidLoad{
 
     [super viewDidLoad];
+
+
+
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"网易新闻";
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.890 green:0.161 blue:0.188 alpha:1.000];
-
 
     //导航栏More按钮
     UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -68,7 +71,6 @@
 
     [self initCategoryNameView:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     [self initCategoryNewsScrollView:CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height - 30 - 48 - 65)];
-//    isAddedNewView = NO;
 }
 
 -(void)initCategoryNewsScrollView:(CGRect)rect{
@@ -363,5 +365,22 @@
     }
 
 }
+
+//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [[[UIApplication sharedApplication] keyWindow] touchesBegan:touches withEvent:event];
+//    [categoryNewsScrollView touchesBegan:touches withEvent:event];
+//}
+//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [[[UIApplication sharedApplication] keyWindow] touchesMoved:touches withEvent:event];
+//    [categoryNewsScrollView touchesMoved:touches withEvent:event];
+//}
+//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [[[UIApplication sharedApplication] keyWindow] touchesEnded:touches withEvent:event];
+//    [categoryNewsScrollView touchesEnded:touches withEvent:event];
+//}
+//-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [[[UIApplication sharedApplication] keyWindow] touchesCancelled:touches withEvent:event];
+//    [categoryNewsScrollView touchesCancelled:touches withEvent:event];
+//}
 
 @end

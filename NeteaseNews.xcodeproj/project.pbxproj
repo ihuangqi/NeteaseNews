@@ -35,6 +35,7 @@
 		24262E381B269AB5002EB676 /* biz_plugin_manage_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 24262E371B269AB5002EB676 /* biz_plugin_manage_check.png */; };
 		24262E3A1B269AE6002EB676 /* biz_plugin_manage_check_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 24262E391B269AE6002EB676 /* biz_plugin_manage_check_pressed.png */; };
 		24262E3D1B26AB42002EB676 /* ColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24262E3C1B26AB42002EB676 /* ColumnModel.m */; };
+		2426CF111B4106E600595174 /* tspark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2426CF101B4106E600595174 /* tspark.png */; };
 		242D9A151B2B0331008228D9 /* RadioDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 242D9A141B2B0331008228D9 /* RadioDetailModel.m */; };
 		242D9A181B2B04CB008228D9 /* RadioObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 242D9A171B2B04CB008228D9 /* RadioObjectModel.m */; };
 		242D9A1D1B2B0803008228D9 /* RadioListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 242D9A1C1B2B0803008228D9 /* RadioListModel.m */; };
@@ -217,6 +218,7 @@
 		24B2D6AF1B20548D00342390 /* MuiscModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2D6AE1B20548D00342390 /* MuiscModel.m */; };
 		24B2D6B41B20556600342390 /* BoBoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2D6B31B20556600342390 /* BoBoModel.m */; };
 		24B2D6B71B207C1000342390 /* biz_news_pread_list_item_control_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 24B2D6B61B207C1000342390 /* biz_news_pread_list_item_control_open.png */; };
+		24B4A5F61B4141F50042085F /* MyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B4A5F51B4141F50042085F /* MyWindow.m */; };
 		24BA20A01B3158FB0006ED11 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BA209D1B3158FB0006ED11 /* HTMLNode.m */; };
 		24BA20A11B3158FB0006ED11 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BA209F1B3158FB0006ED11 /* HTMLParser.m */; };
 		24BA20A91B3159190006ED11 /* FDFontPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BA20A41B3159190006ED11 /* FDFontPickerViewController.m */; };
@@ -377,6 +379,7 @@
 		24262E391B269AE6002EB676 /* biz_plugin_manage_check_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biz_plugin_manage_check_pressed.png; sourceTree = "<group>"; };
 		24262E3B1B26AB42002EB676 /* ColumnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColumnModel.h; path = Model/ColumnModel.h; sourceTree = "<group>"; };
 		24262E3C1B26AB42002EB676 /* ColumnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColumnModel.m; path = Model/ColumnModel.m; sourceTree = "<group>"; };
+		2426CF101B4106E600595174 /* tspark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tspark.png; sourceTree = "<group>"; };
 		242D9A131B2B0331008228D9 /* RadioDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioDetailModel.h; path = Model/RadioDetailModel.h; sourceTree = "<group>"; };
 		242D9A141B2B0331008228D9 /* RadioDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioDetailModel.m; path = Model/RadioDetailModel.m; sourceTree = "<group>"; };
 		242D9A161B2B04CB008228D9 /* RadioObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioObjectModel.h; path = Views/RadioObjectModel.h; sourceTree = "<group>"; };
@@ -653,6 +656,8 @@
 		24B2D6B21B20556600342390 /* BoBoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoBoModel.h; path = Model/BoBoModel.h; sourceTree = "<group>"; };
 		24B2D6B31B20556600342390 /* BoBoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoBoModel.m; path = Model/BoBoModel.m; sourceTree = "<group>"; };
 		24B2D6B61B207C1000342390 /* biz_news_pread_list_item_control_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biz_news_pread_list_item_control_open.png; sourceTree = "<group>"; };
+		24B4A5F41B4141F50042085F /* MyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWindow.h; sourceTree = "<group>"; };
+		24B4A5F51B4141F50042085F /* MyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWindow.m; sourceTree = "<group>"; };
 		24BA209C1B3158FB0006ED11 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
 		24BA209D1B3158FB0006ED11 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		24BA209E1B3158FB0006ED11 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
@@ -967,6 +972,8 @@
 				243B654D1B1EA09A0072F698 /* Images.xcassets */,
 				243B654F1B1EA09A0072F698 /* LaunchScreen.xib */,
 				243B65401B1EA09A0072F698 /* Supporting Files */,
+				24B4A5F41B4141F50042085F /* MyWindow.h */,
+				24B4A5F51B4141F50042085F /* MyWindow.m */,
 			);
 			name = NeteaseNews;
 			path = NeteasyNews;
@@ -1604,6 +1611,7 @@
 		24B2D6B51B207C0100342390 /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
+				2426CF101B4106E600595174 /* tspark.png */,
 				24F715441B3E9B84000E415F /* 加载 */,
 				24DD90361B23E68C00340948 /* tabbar */,
 				24E614941B22AE6D00C568DA /* 头像 */,
@@ -2366,6 +2374,7 @@
 				247E41CE1B301BC9004D9443 /* biz_simple_weather_yangsha.png in Resources */,
 				24F27D081B2AD78C00FD4365 /* RadioGeneralCell.xib in Resources */,
 				2496A7C01B26C6DA00485A85 /* app_recommend_arrow.png in Resources */,
+				2426CF111B4106E600595174 /* tspark.png in Resources */,
 				247E41961B301834004D9443 /* night_biz_more_menu_weather_symbol.png in Resources */,
 				2475490C1B294C0F00A6BE8B /* biz_media_subscribed_list_item_delete_pressed.png in Resources */,
 				243FDDBC1B1EFA2200599266 /* ImgextraNewsCell.xib in Resources */,
@@ -2412,6 +2421,7 @@
 				243B65EC1B1EB18E0072F698 /* UIView+WebCacheOperation.m in Sources */,
 				243B65CC1B1EB18E0072F698 /* AFURLConnectionOperation.m in Sources */,
 				24E2E1F21B34084B00EAC2A7 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
+				24B4A5F61B4141F50042085F /* MyWindow.m in Sources */,
 				248FEAEC1B25BD060080C001 /* RecommendListModel.m in Sources */,
 				24DE04EF1B2C0FFC007A24B6 /* RadioPlayer.m in Sources */,
 				243B65C71B1EB18E0072F698 /* AFHTTPRequestOperation.m in Sources */,
