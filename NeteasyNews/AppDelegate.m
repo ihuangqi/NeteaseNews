@@ -138,6 +138,7 @@
 
 
     TestViewController *meVC = [[TestViewController alloc] init];
+    UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:meVC];
     meVC.view.backgroundColor = [UIColor blackColor];
     meVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我"
                                                     image:[[[UIImage imageNamed:@"biz_navigation_tab_pc"]  scaleToSize:CGSizeMake(30, 30)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
@@ -145,7 +146,7 @@
 
 
     UITabBarController *tabBarC = [[UITabBarController alloc] init];
-    tabBarC.viewControllers= @[newsNC,readVC,mediaVC,discoveryVC,meVC];
+    tabBarC.viewControllers= @[newsNC,readVC,mediaVC,discoveryVC,naVC];
 
     tabBarC.tabBar.backgroundColor = kDefanltBackgroundColor;
     tabBarC.selectedIndex = 0;

@@ -228,6 +228,7 @@
 		24BA20B11B315BCD0006ED11 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BA20B01B315BCD0006ED11 /* UIKit.framework */; };
 		24BA20B31B315C7E0006ED11 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BA20B21B315C7E0006ED11 /* libxml2.dylib */; };
 		24BA20B61B31890D0006ED11 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BA20B51B31890D0006ED11 /* NewsViewController.m */; };
+		24CD0DF21B46289200FF97D4 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CD0DF11B46289200FF97D4 /* CoreBluetooth.framework */; };
 		24DD902D1B23D46300340948 /* EntertainmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD902C1B23D46300340948 /* EntertainmentModel.m */; };
 		24DD90341B23E41E00340948 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD90321B23E41E00340948 /* MediaViewController.m */; };
 		24DD90351B23E41E00340948 /* MediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24DD90331B23E41E00340948 /* MediaViewController.xib */; };
@@ -325,6 +326,10 @@
 		24EBB38C1B25717D007B7691 /* biz_subscribe_media_recommend_item_subscribe_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EBB38B1B25717D007B7691 /* biz_subscribe_media_recommend_item_subscribe_add.png */; };
 		24EBB38F1B258F71007B7691 /* PictureAndContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24EBB38E1B258F71007B7691 /* PictureAndContent.xib */; };
 		24EDB5E91B3FBEF0000CC24D /* UIImageView+ImageLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EDB5E81B3FBEF0000CC24D /* UIImageView+ImageLoading.m */; };
+		24F009CC1B43A805001EF1C2 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F009CB1B43A805001EF1C2 /* CalendarViewController.m */; };
+		24F009CF1B43C16A001EF1C2 /* UIView+MotionEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F009CE1B43C16A001EF1C2 /* UIView+MotionEffect.m */; };
+		24F009D21B43DBE3001EF1C2 /* Paint.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F009D11B43DBE3001EF1C2 /* Paint.m */; };
+		24F009D51B4400FA001EF1C2 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F009D41B4400FA001EF1C2 /* MyView.m */; };
 		24F27CE21B2AC61500FD4365 /* VideoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F27CE11B2AC61500FD4365 /* VideoTableView.m */; };
 		24F27CE51B2AC63300FD4365 /* RadioTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F27CE41B2AC63300FD4365 /* RadioTableView.m */; };
 		24F27CEB1B2ACAB300FD4365 /* RadioTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24F27CE91B2ACAB300FD4365 /* RadioTopCell.xib */; };
@@ -674,6 +679,7 @@
 		24BA20B21B315C7E0006ED11 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		24BA20B41B31890D0006ED11 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		24BA20B51B31890D0006ED11 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		24CD0DF11B46289200FF97D4 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		24DD902B1B23D46300340948 /* EntertainmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntertainmentModel.h; sourceTree = "<group>"; };
 		24DD902C1B23D46300340948 /* EntertainmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntertainmentModel.m; sourceTree = "<group>"; };
 		24DD90311B23E41E00340948 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaViewController.h; path = Views/MediaViewController.h; sourceTree = "<group>"; };
@@ -806,6 +812,14 @@
 		24EBB38E1B258F71007B7691 /* PictureAndContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PictureAndContent.xib; sourceTree = "<group>"; };
 		24EDB5E71B3FBEF0000CC24D /* UIImageView+ImageLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ImageLoading.h"; sourceTree = "<group>"; };
 		24EDB5E81B3FBEF0000CC24D /* UIImageView+ImageLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ImageLoading.m"; sourceTree = "<group>"; };
+		24F009CA1B43A805001EF1C2 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		24F009CB1B43A805001EF1C2 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		24F009CD1B43C16A001EF1C2 /* UIView+MotionEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MotionEffect.h"; sourceTree = "<group>"; };
+		24F009CE1B43C16A001EF1C2 /* UIView+MotionEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MotionEffect.m"; sourceTree = "<group>"; };
+		24F009D01B43DBE3001EF1C2 /* Paint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paint.h; sourceTree = "<group>"; };
+		24F009D11B43DBE3001EF1C2 /* Paint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paint.m; sourceTree = "<group>"; };
+		24F009D31B4400FA001EF1C2 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		24F009D41B4400FA001EF1C2 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 		24F27CE01B2AC61500FD4365 /* VideoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoTableView.h; path = Views/VideoTableView.h; sourceTree = "<group>"; };
 		24F27CE11B2AC61500FD4365 /* VideoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoTableView.m; path = Views/VideoTableView.m; sourceTree = "<group>"; };
 		24F27CE31B2AC63300FD4365 /* RadioTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioTableView.h; path = Views/RadioTableView.h; sourceTree = "<group>"; };
@@ -861,6 +875,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24CD0DF21B46289200FF97D4 /* CoreBluetooth.framework in Frameworks */,
 				24BA20B31B315C7E0006ED11 /* libxml2.dylib in Frameworks */,
 				24BA20B11B315BCD0006ED11 /* UIKit.framework in Frameworks */,
 				24BA20AF1B315BC60006ED11 /* CoreGraphics.framework in Frameworks */,
@@ -1023,6 +1038,7 @@
 		243B65711B1EB18E0072F698 /* 第三方框架 */ = {
 			isa = PBXGroup;
 			children = (
+				24CD0DF11B46289200FF97D4 /* CoreBluetooth.framework */,
 				243B65EE1B1EB33C0072F698 /* libsqlite3.0.dylib */,
 				2433EA6D1B2428E0009C61E3 /* AVFoundation.framework */,
 				2433EA6B1B2428DA009C61E3 /* AVKit.framework */,
@@ -1715,8 +1731,8 @@
 				2496A7C91B26E6D800485A85 /* UIImageView+SetWebPImage.h */,
 				2496A7CA1B26E6D800485A85 /* UIImageView+SetWebPImage.m */,
 				24E10B6D1B29233300C842AB /* UILabel+setTimeText.h */,
-				24E10B6E1B29233300C842AB /* UILabel+setTimeText.m */,
 				24E2FD5B1B3A492C003A2B70 /* UIImage+ConvertFromUIImage.h */,
+				24E10B6E1B29233300C842AB /* UILabel+setTimeText.m */,
 				24E2FD5C1B3A492C003A2B70 /* UIImage+ConvertFromUIImage.m */,
 				24E2FD5E1B3A50A6003A2B70 /* UIView+MaskView.h */,
 				24E2FD5F1B3A50A6003A2B70 /* UIView+MaskView.m */,
@@ -1863,6 +1879,14 @@
 				24B4A5F51B4141F50042085F /* MyWindow.m */,
 				24E64D1E1B424D6400DED440 /* TestViewController.h */,
 				24E64D1F1B424D6400DED440 /* TestViewController.m */,
+				24F009CA1B43A805001EF1C2 /* CalendarViewController.h */,
+				24F009CB1B43A805001EF1C2 /* CalendarViewController.m */,
+				24F009CD1B43C16A001EF1C2 /* UIView+MotionEffect.h */,
+				24F009CE1B43C16A001EF1C2 /* UIView+MotionEffect.m */,
+				24F009D01B43DBE3001EF1C2 /* Paint.h */,
+				24F009D11B43DBE3001EF1C2 /* Paint.m */,
+				24F009D31B4400FA001EF1C2 /* MyView.h */,
+				24F009D41B4400FA001EF1C2 /* MyView.m */,
 			);
 			name = "测试";
 			sourceTree = "<group>";
@@ -2495,8 +2519,10 @@
 				24BA20A11B3158FB0006ED11 /* HTMLParser.m in Sources */,
 				24DE04F41B2C2738007A24B6 /* RadioDetialTableViewCell.m in Sources */,
 				24F27D061B2AD77300FD4365 /* RadioGeneralCell.m in Sources */,
+				24F009D21B43DBE3001EF1C2 /* Paint.m in Sources */,
 				249BB9EA1B29860900DE5915 /* SubActivity.m in Sources */,
 				243B65DA1B1EB18E0072F698 /* FMDatabasePool.m in Sources */,
+				24F009CC1B43A805001EF1C2 /* CalendarViewController.m in Sources */,
 				249BB9D31B297D3100DE5915 /* AdvertiseCell.m in Sources */,
 				24FDE4091B21BD2900BD0EB8 /* CustomCell.m in Sources */,
 				246B48791B281D9700B38727 /* AllColunmsView.m in Sources */,
@@ -2526,6 +2552,7 @@
 				243B65E41B1EB18E0072F698 /* SDWebImageManager.m in Sources */,
 				243B65E91B1EB18E0072F698 /* UIImage+WebP.m in Sources */,
 				24E2FD601B3A50A6003A2B70 /* UIView+MaskView.m in Sources */,
+				24F009CF1B43C16A001EF1C2 /* UIView+MotionEffect.m in Sources */,
 				243B65D71B1EB18E0072F698 /* UIWebView+AFNetworking.m in Sources */,
 				243B65431B1EA09A0072F698 /* main.m in Sources */,
 				24F27CEF1B2ACB5F00FD4365 /* AllRadioModel.m in Sources */,
@@ -2564,6 +2591,7 @@
 				24F27CFB1B2AD03700FD4365 /* RadioclassifyModel.m in Sources */,
 				248FEAF01B25BD1D0080C001 /* BannerListModel.m in Sources */,
 				24F27CE21B2AC61500FD4365 /* VideoTableView.m in Sources */,
+				24F009D51B4400FA001EF1C2 /* MyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
