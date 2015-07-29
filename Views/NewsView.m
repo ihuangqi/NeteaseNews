@@ -30,7 +30,7 @@
 
 
 
-@interface NewsView()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MJRefreshBaseViewDelegate>
+@interface NewsView()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
 
     NSMutableArray *_dataArray;
@@ -41,8 +41,6 @@
     int pageStart;
     int pageCount;
     BOOL isRequesting;
-
-    MJRefreshHeaderView *headerView;
 
     BOOL isBeginReflash;
     BOOL isReflashing;
@@ -77,9 +75,12 @@
         }
         [self initNewsTableView:self.bounds];
 
-        headerView = [[MJRefreshHeaderView alloc] initWithScrollView:_tableView];
-        headerView.delegate = self;
-
+        __weak typeof(self) weakSelf = self;
+        self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            __strong typeof(self) strongSelf = weakSelf;
+            pageStart = 0;
+            [strongSelf addDataSource];
+        }];
         isRequesting = NO;
 
         _tableView.rowHeight = UITableViewAutomaticDimension;
@@ -90,10 +91,10 @@
     return self;
 }
 
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    pageStart = 0;
-    [self addDataSource];
-}
+//-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+//    pageStart = 0;
+//    [self addDataSource];
+//}
 
 -(void)initNewsTableView:(CGRect)tableViewRect{
 
@@ -367,7 +368,7 @@
             [UIView showToaseViewWithText:@"网络不给力哦" Time:3];
         }
 
-        [headerView endRefreshing];
+        [self.tableView.header endRefreshing];
         isRequesting = NO;
         [MBProgressHUD hideHUDForView:self animated:YES];
     }];
@@ -409,9 +410,9 @@
 }
 
 -(void)dealloc{
-    [_tableView removeObserver:headerView forKeyPath:@"contentOffset"];
-    headerView.delegate = nil;
-    headerView = nil;
+//    [_tableView removeObserver:headerView forKeyPath:@"contentOffset"];
+//    headerView.delegate = nil;
+//    headerView = nil;
 }
 
 

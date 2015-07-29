@@ -22,13 +22,13 @@
 #define kRadioGeneralCellKey @"RadioGeneralCell"
 
 
-@interface RadioTableView()<UITableViewDelegate,UITableViewDataSource,MJRefreshBaseViewDelegate>
+@interface RadioTableView()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 @implementation RadioTableView
 {
     AllRadioModel *allRadioModel;
-    MJRefreshHeaderView *headerView;
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -47,8 +47,11 @@
         self.dataSource = self;
         self.delegate = self;
 
-        headerView = [[MJRefreshHeaderView alloc] initWithScrollView:self];
-        headerView.delegate = self;
+        __weak typeof(self) weakSelf = self;
+        self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            __strong typeof(self) strongSelf = weakSelf;
+            [strongSelf getDataSource];
+        }];
         
         self.rowHeight = UITableViewAutomaticDimension;
         self.estimatedRowHeight = 20;
@@ -57,9 +60,7 @@
     }
     return self;
 }
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    [self getDataSource];
-}
+
 -(void)getDataSource{
     [MBProgressHUD showHUDAddedTo:self animated:YES];
     NSString *url = [NSString stringWithFormat:API];
@@ -68,7 +69,7 @@
         if (allRadioModel) {
             [self reloadData];
         }
-        [headerView endRefreshing];
+        [self.header endRefreshing];
         [MBProgressHUD hideHUDForView:self animated:YES];
     }];
 

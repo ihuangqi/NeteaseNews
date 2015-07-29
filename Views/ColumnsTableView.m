@@ -15,7 +15,7 @@
 #import "MBProgressHUD.h"
 
 #define kColumnsTableViewCellKey @"ColumnsTableViewCell"
-@interface ColumnsTableView()<UIScrollViewDelegate,UITableViewDelegate,MJRefreshBaseViewDelegate>
+@interface ColumnsTableView()<UIScrollViewDelegate,UITableViewDelegate>
 
 @end
 @implementation ColumnsTableView
@@ -35,8 +35,6 @@
 
     NSMutableArray *dataArray;
 
-    MJRefreshHeaderView *mjHeaderView;
-
     NSString *categoryPath;
     NSString *categoryValue;
     int pageStart;
@@ -50,16 +48,22 @@
     initConstraintHeight = 40;
     iconView.layer.cornerRadius = 10;
     iconView.clipsToBounds = YES;
-    mjHeaderView = [[MJRefreshHeaderView alloc] initWithScrollView:_tableView];
-    mjHeaderView.delegate = self;
+
+    __weak typeof(self) weakSelf = self;
+    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        __strong typeof(self) strongSelf = weakSelf;
+        pageStart = 0;
+        [strongSelf getDataSource];
+    }];
+    
 
     _tableView.rowHeight = UITableViewAutomaticDimension;
     _tableView.estimatedRowHeight = 100;
 }
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    pageStart = 0;
-    [self getDataSource];
-}
+//-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+//    pageStart = 0;
+//    [self getDataSource];
+//}
 
 - (instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
@@ -158,7 +162,7 @@
             [_tableView reloadData];
         }
         isRequesting = NO;
-        [mjHeaderView endRefreshing];
+        [_tableView.header endRefreshing];
         [MBProgressHUD hideHUDForView:_tableView animated:YES];
     }];
 }
@@ -173,9 +177,9 @@
 }
 
 -(void)dealloc{
-    [_tableView removeObserver:mjHeaderView forKeyPath:@"contentOffset"];
-    mjHeaderView.delegate = nil;
-    mjHeaderView = nil;
+//    [_tableView removeObserver:mjHeaderView forKeyPath:@"contentOffset"];
+//    mjHeaderView.delegate = nil;
+//    mjHeaderView = nil;
 
 }
 

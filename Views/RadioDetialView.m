@@ -28,7 +28,7 @@
 
 #define kRadioDetialTableViewCellKey @"RadioDetialTableViewCell"
 static RadioPlayer *player;
-@interface RadioDetialView()<UITableViewDelegate,UITableViewDataSource,MJRefreshBaseViewDelegate>
+@interface RadioDetialView()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 @implementation RadioDetialView
@@ -53,9 +53,6 @@ static RadioPlayer *player;
 
     RadioListModel *topListModel;
 
-
-    MJRefreshHeaderView *headerView;
-
     BOOL isRequesting;
 
     int startPage;
@@ -74,17 +71,20 @@ static RadioPlayer *player;
     _imageView.layer.cornerRadius = _imageView.frame.size.width / 2;
     _imageView.layer.borderWidth = 10;
     _imageView.layer.borderColor = [UIColor colorWithWhite:0.200 alpha:0.800].CGColor;
-    [_tableView registerNib:[UINib nibWithNibName:@"RadioDetialTableViewCell" bundle:nil] forCellReuseIdentifier:kRadioDetialTableViewCellKey];
-
-    headerView = [[MJRefreshHeaderView alloc] initWithScrollView:_tableView];
-    headerView.delegate =self;
+    [_tableView registerNib:[UINib nibWithNibName:@"RadioDetialTableViewCell" bundle:nil] forCellReuseIdentifier:kRadioDetialTableViewCellKey];  
     
+    __weak typeof(self) weakSelf = self;
+    _tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        __strong typeof(self) strongSelf = weakSelf;
+        startPage = 0;
+        [strongSelf getDataSource];
+    }];
 }
 
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    startPage = 0;
-    [self getDataSource];
-}
+//-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+//    startPage = 0;
+//    [self getDataSource];
+//}
 - (IBAction)backButtonClick:(id)sender {
     [UIView animateWithDuration:0.5 animations:^{
         self.transform = CGAffineTransformMakeTranslation(self.frame.size.width, 0);
@@ -214,7 +214,7 @@ static RadioPlayer *player;
             });
         }
         [_tableView reloadData];
-        [headerView endRefreshing];
+        [_tableView.header endRefreshing];
         isRequesting = NO;
         [MBProgressHUD hideHUDForView:self animated:YES];
     }];
@@ -260,9 +260,9 @@ static RadioPlayer *player;
     }
 }
 -(void)dealloc{
-    [_tableView removeObserver:headerView forKeyPath:@"contentOffset"];
-    headerView.delegate = nil;
-    headerView = nil;
+//    [_tableView removeObserver:headerView forKeyPath:@"contentOffset"];
+//    headerView.delegate = nil;
+//    headerView = nil;
     
 }
 @end

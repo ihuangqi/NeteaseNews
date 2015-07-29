@@ -24,9 +24,8 @@
 #import "MySubscribeCell.h"
 #import "MJRefresh.h"
 
-@interface MySubscribeTableView()<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate>
+@interface MySubscribeTableView()<UITableViewDataSource,UITableViewDelegate>
 {    NSArray *mySubscribeDataArray;
-    MJRefreshHeaderView *headerView;
 }
 @end
 
@@ -51,10 +50,12 @@
 
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-
-        headerView = [[MJRefreshHeaderView alloc] initWithScrollView:self];
-        headerView.delegate = self;
-
+        __weak typeof(self) weakSelf = self;
+        self.header =  [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            __strong typeof(self) strongSelf = weakSelf;
+            [strongSelf getDataSoure];
+        }];
+        
         self.rowHeight = UITableViewAutomaticDimension;
         self.estimatedRowHeight = 100;
 
@@ -64,9 +65,9 @@
     }
     return self;
 }
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    [self getDataSoure];
-}
+//-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+//    [self getDataSoure];
+//}
 -(void)getDataSoure{
      NSString *urlString = @"http://c.3g.163.com/uc/api/visitor/v5/subs";
     //passport=359876052121654&sign=ded13969b96f8aa0e9fdfd4a0fca3a93
@@ -85,7 +86,7 @@
             [mySubscribeDataArray[1] removeAllObjects];
             [mySubscribeDataArray[1] addObjectsFromArray:array];
             [self reloadData];
-            [headerView endRefreshing];
+            [self.header endRefreshing];
         }];
     }];
 }

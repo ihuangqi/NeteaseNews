@@ -17,14 +17,12 @@
 
 #define API @"http://c.3g.163.com/nc/video/list/V9LG4B3A0/n/%d-%d.html"
 
-@interface VideoTableView()<UITableViewDelegate,UITableViewDataSource,MJRefreshBaseViewDelegate>
+@interface VideoTableView()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *dataArray;
     int pageStart;
     int pageCount;
     BOOL isRequesting;
-
-    MJRefreshHeaderView *headView;
 }
 @end
 @implementation VideoTableView
@@ -48,8 +46,12 @@
         dataArray = [NSMutableArray new];
         pageStart = 0;
         pageCount = 20;
-        headView = [[MJRefreshHeaderView alloc] initWithScrollView:self];
-        headView.delegate = self;
+
+        __weak typeof(self) weakSelf = self;
+        self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            __strong typeof(self) strongSelf = weakSelf;
+            [strongSelf getDataSource];
+        }];
         
         self.rowHeight = UITableViewAutomaticDimension;
         self.estimatedRowHeight = 200;
@@ -58,10 +60,10 @@
     }
     return self;
 }
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    pageStart = 0;
-    [self getDataSource];
-}
+//-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+//    pageStart = 0;
+//    [self getDataSource];
+//}
 -(void)getDataSource{
     [MBProgressHUD showHUDAddedTo:self animated:YES];
     NSString *url = [NSString stringWithFormat:API,pageStart,pageCount];
@@ -76,7 +78,7 @@
             [self reloadData];
             isRequesting = NO;
         }
-        [headView endRefreshing];
+        [self.header endRefreshing];
         [MBProgressHUD hideHUDForView:self animated:YES];
     }];
 }

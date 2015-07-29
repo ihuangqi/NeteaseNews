@@ -16,14 +16,12 @@
 #define RecommendAPI @"http://c.3g.163.com/recommend/getSubDocNews?passport=&devId=359876052121654&size=%d&from=yuedu"
 
 
-@interface RecommendTableView()<UITableViewDelegate,UITableViewDataSource,MJRefreshBaseViewDelegate>
+@interface RecommendTableView()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *recommendDataArray;
     int pageStart;
     int pageCount;
     BOOL isRequesting;
-
-    MJRefreshHeaderView *headerView;
 }
 @end
 
@@ -46,12 +44,12 @@
         [self registerNib:[UINib nibWithNibName:@"RecommendCell" bundle:nil] forCellReuseIdentifier:kRecommendCellIdentifier];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-
-
-        headerView = [[MJRefreshHeaderView alloc] initWithScrollView:self];
-        headerView.delegate = self;
-
-
+        __weak typeof(self) weakSelf = self;
+        self.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            __strong typeof(self) strongSelf = weakSelf;
+            [strongSelf getDataSource];
+        }];
+        
         self.rowHeight = UITableViewAutomaticDimension;
         self.estimatedRowHeight = 150;
 
@@ -64,13 +62,13 @@
     [Network GetDataFromAFNetworkingWithURL:url CallBack:^(id responseObject) {
         recommendDataArray = [RecommendModel getRecommendModelFromResponse:responseObject];
         [self reloadData];
-        [headerView endRefreshing];
+        [self.header endRefreshing];
 
     }];
 }
--(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
-    [self getDataSource];
-}
+//-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+//    [self getDataSource];
+//}
 
 #pragma mark- UITableViewDataSource中的方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

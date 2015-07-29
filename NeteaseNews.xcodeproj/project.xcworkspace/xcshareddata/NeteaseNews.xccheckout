@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2B2B4656-5286-41BA-9B21-9F2068AA389A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>NeteaseNews</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8B21B27DD1B6CF9264A6549351232864FD3750C2</key>
 		<string>https://github.com/hq804116393/NeteaseNews.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>NeteaseNews.xcodeproj</string>
+	<string>NeteaseNews.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8B21B27DD1B6CF9264A6549351232864FD3750C2</key>
